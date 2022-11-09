@@ -37,15 +37,7 @@ const track=ref(musicList[0] as Track)
 <template>
     <div class="container">
     <MyPlayer :track="track.src"/>
-    <!-- <AudioPlayer class="player" :option="{
-        ...track,
-       
-        indicatorColor:'red',
-        progressBarColor:'red',
-        coverRotate:false,
-        
-        
-    }" /> -->
+   
    <Playlist class="list" v-on:update:track="track=$event" :tracks="musicList"/>
 
    <!-- <image v-src="track.coverImage"/> -->

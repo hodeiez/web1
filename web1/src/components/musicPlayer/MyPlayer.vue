@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
+import MyProgressBar from './MyProgressBar.vue';
 
 const track=defineProps<{
         track:string;
@@ -12,6 +13,7 @@ const t=ref(0)
 const play=()=>{
    ap.value.play()
    timer()
+  
 }
 const pause=()=>{
    ap.value.pause()
@@ -19,6 +21,7 @@ const pause=()=>{
 const stop=()=>{
     ap.value.pause()
    ap.value.currentTime=0
+   
 }
 const timer=()=>{setInterval(()=>{
     t.value=ap.value.currentTime
@@ -30,8 +33,9 @@ const timer=()=>{setInterval(()=>{
     <button class="play" @click="play">></button>
     <button class="stop" @click="stop">o</button>
     <button class="pause" @click="pause">||</button>
-    <audio ref="ap" :src=track.track autoplay=true></audio>
-    {{t}}
-   <!-- <button>{{track.track}}</button> -->
+
+    <audio ref="ap" :src=track.track autoplay=false></audio>
+    <MyProgressBar :size=ap.duration :progress=t />
+
     </div>
 </template>
