@@ -4,15 +4,18 @@ import AudioPlayer from 'vue3-audio-player'
 import 'vue3-audio-player/dist/style.css'
 import {ref} from 'vue'
 import Playlist from './musicPlayer/Playlist.vue'
+import MyPlayer from './musicPlayer/MyPlayer.vue'
 type Track= {
 src:string,
 title:string,
 coverImage:string,
+description?:string,
 }
 const musicList:Track[]=[
  {src:"https://cdn.pixabay.com/download/audio/2021/09/13/audio_2112f08262.mp3",
  title:"Hello Beethoven",
- coverImage:"https://www.kolpaper.com/wp-content/uploads/2021/01/Psychedelic-Art-Wallpaper-2.jpg"}
+ coverImage:"https://www.kolpaper.com/wp-content/uploads/2021/01/Psychedelic-Art-Wallpaper-2.jpg",
+description:"ffdjsaklfjdk fasfjdklafjdlasjf"}
 ,{src:"https://assets.mixkit.co/music/preview/mixkit-relaxing-in-nature-522.mp3",
 title:"Relaxing Nature",
 coverImage:"https://getwallpapers.com/wallpaper/full/e/a/c/460547.jpg"},{src:"https://cdn.pixabay.com/download/audio/2021/09/13/audio_2112f08262.mp3",
@@ -32,27 +35,43 @@ const track=ref(musicList[0] as Track)
 
 </script>
 <template>
-     <div class="container">
-    <AudioPlayer :option="{
+    <div class="container">
+    <MyPlayer :track="track.src"/>
+    <!-- <AudioPlayer class="player" :option="{
         ...track,
        
         indicatorColor:'red',
         progressBarColor:'red',
         coverRotate:false,
         
-    }" />
-   <Playlist v-on:update:track="track=$event" :tracks="musicList"/>
+        
+    }" /> -->
+   <Playlist class="list" v-on:update:track="track=$event" :tracks="musicList"/>
 
    <!-- <image v-src="track.coverImage"/> -->
-    
+  
 </div>
  </template>
- <style>
+ <style scoped>
 
  .container{
-    display: flex;
-    width: 100%;
+   margin:0;
+   padding: 1px;
  
+ 
+ 
+ }
+ .list{
+text-align: center;
+align-content: center;
+align-items:center;
+margin:0;
+width:100%;
+  
+ }
+ .player{
+    
+
  }
  </style>
 

@@ -8,16 +8,17 @@ import MusicPlayerVue from './components/MusicPlayer.vue'
 </script>
 
 <template>
-
+<MusicPlayerVue class="aligned"/>
             <nav>
          
                 <RouterLink to="/">Home</RouterLink>
                 <RouterLink to="/about">About</RouterLink>
                 <RouterLink to="/first">First</RouterLink>
             </nav>
-    
-            <MusicPlayerVue class="aligned"/>
+ 
+            
     <RouterView />
+
 </template>
 
 <style scoped>
@@ -27,8 +28,10 @@ import MusicPlayerVue from './components/MusicPlayer.vue'
 } */
 
 .aligned{
-    display: inline;
+    display: block;
     margin:auto;
+    height: 100%;
+    width:100%
 }
 
 nav {
@@ -58,6 +61,7 @@ nav a:first-of-type {
 }
 
 @media (min-width: 1024px) {
+   
     /* header {
         display: flex;
         place-items: center;
@@ -66,19 +70,19 @@ nav a:first-of-type {
 
  
 
-    header .wrapper {
+    /* header .wrapper {
         display: flex;
         place-items: flex-start;
         flex-wrap: wrap;
     }
-
-    nav {
+*/
+    /* nav {
         text-align: left;
         margin-left: -1rem;
         font-size: 1rem;
 
         padding: 1rem 0;
         margin-top: 1rem;
-    }
+    }  */
 }
 </style>

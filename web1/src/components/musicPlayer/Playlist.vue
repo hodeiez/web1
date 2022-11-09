@@ -1,8 +1,8 @@
 
 <script setup lang="ts">
-import AudioPlayer from 'vue3-audio-player'
-import 'vue3-audio-player/dist/style.css'
-import {defineProps, toRefs} from 'vue'
+
+// import 'vue3-audio-player/dist/style.css'
+import {defineProps} from 'vue'
 import type { Track } from './types';
 
 
@@ -14,19 +14,24 @@ const props=defineProps<{
 </script>
 <template>
  
-   <!-- <div class="container"> -->
-    <ul >
-    <li class="trackInList" v-for="t in tracks" v-on:click="$emit('update:track',t)">{{t.title}}</li></ul>
-<!-- </div> -->
+   <div class="container">
+    <div class="list" >
+        <div class="trackInList" v-for="t in tracks" v-on:click="$emit('update:track',t)">
+        <p class="trackTitle">{{t.title}}</p><p>{{t.description}}</p>
+        <img  class="trackImage" :src='t.coverImage'/></div>
+    </div>
+</div>
  </template>
- <style>
+ <style scoped>
  .container{
-    max-height: 75%;
-overflow-y: auto;
-height: 20rem;
-width: 100%;
+    max-height: 20%;
+    overflow-y: auto;
+    margin:0;
+    height:100px;
 
-margin:0;
+
+
+
 
  }
 
@@ -38,7 +43,10 @@ margin:0;
      border-radius: 1rem;
      padding:0.4rem;
      margin:1rem;
-     width: 100%;
+     display: flex;
+     align-self:center;
+    
+    
      
      
  }
@@ -49,6 +57,24 @@ margin:0;
  .trackInList:active{
      background-color:blueviolet
  }
-
+.list{
+   padding:0px;
+   
+   
+  
+}
+.trackImage{
+ max-width: 20px;
+ max-height: 20px;
+ margin:0;
+ padding:0;
+ align-self: flex-end;
+ align-content: flex-end;
+ 
+ 
+}
+.trackTitle{
+    width: 30%;
+}
  </style>
 
