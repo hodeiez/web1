@@ -7,7 +7,7 @@ import type { Track } from './types';
 
 
 
-const props=defineProps<{
+defineProps<{
     tracks:Track[],
 }>()
 
@@ -18,7 +18,8 @@ const props=defineProps<{
     <div class="list" >
         <div class="trackInList" v-for="t in tracks" v-on:click="$emit('update:track',t)">
         <p class="trackTitle">{{t.title}}</p><p>{{t.description}}</p>
-        <img  class="trackImage" :src='t.coverImage'/></div>
+        <!-- <img  class="trackImage" :src='t.coverImage'/> -->
+        </div>
     </div>
 </div>
  </template>
@@ -40,11 +41,12 @@ const props=defineProps<{
      text-align: center;
      list-style-type: none;
      background-color: rgba(255, 102, 219, 0.199);
-     border-radius: 1rem;
-     padding:0.4rem;
-     margin:1rem;
+     border-radius: 0.3rem;
+     padding:0.2rem;
+     margin:0.2rem;
      display: flex;
      align-self:center;
+     font-size:10px;
     
     
      
