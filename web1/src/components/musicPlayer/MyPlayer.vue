@@ -35,7 +35,7 @@ const timer=()=>{setInterval(()=>{
     <button class="play" @click="play"> > </button>
     <button class="stop" @click="stop"> o </button>
     <button class="pause" @click="pause"> || </button>
-    <MyVolume :audio=ap />
+    <MyVolume :vol=ap :val=0 v-on:update:val="ap.volume=$event"/>
     <audio ref="ap" :src=track.track autoplay=false></audio>
     <MyProgressBar :size=ap.duration :progress=t />
 
