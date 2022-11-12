@@ -30,18 +30,34 @@ const timer=()=>{setInterval(()=>{
 },10)}
 </script>
 <template>
+    <MyProgressBar :size=ap.duration :progress=t />
+    
     <div class="playerContainer">
     
     <button class="play" @click="play"> > </button>
     <button class="stop" @click="stop"> o </button>
     <button class="pause" @click="pause"> || </button>
-    <MyVolume :vol=ap :val=0 v-on:update:val="ap.volume=$event"/>
     <audio ref="ap" :src=track.track autoplay=false></audio>
-    <MyProgressBar :size=ap.duration :progress=t />
 
-    </div>
+    <MyVolume class="volu" :vol=ap :val=100 v-on:update:val="ap.volume=$event"/>
+</div>
+    
+
+   
 </template>
 <style>
+.all{
+   
+}
+.playerContainer{
+
+}
+.volu{
+    
+
+
+    
+}
 .playerContainer button{
     background-color: rgb(96, 12, 97);
     border-radius:20px;
@@ -49,6 +65,7 @@ const timer=()=>{setInterval(()=>{
     border:none;
     margin: 5px;
     color:white;
+    display:inline-block;
 }
 .playerContainer button:hover{
     background-color: rgb(224, 177, 224);

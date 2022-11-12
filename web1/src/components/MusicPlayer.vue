@@ -36,11 +36,11 @@ const track=ref(musicList[0] as Track)
 </script>
 <template>
     <div class="container">
+      <Playlist class="list" v-on:update:track="track=$event" :tracks="musicList"/>
     <MyPlayer :track="track.src"/>
    
-   <Playlist class="list" v-on:update:track="track=$event" :tracks="musicList"/>
+   
 
-   <!-- <image v-src="track.coverImage"/> -->
   
 </div>
  </template>

@@ -2,26 +2,61 @@
 
 
 
-const props=defineProps<{
-      //  vol:HTMLAudioElement;
+defineProps<{
+
        val:number;
     }>()
      const inp=ref({}as HTMLInputElement) 
-// const val=ref(0 as any)
-// watch(props.vol,()=>{
-// props.vol.volume=props.val
-// })
-// const setVol=()=>{
-//   vol.volume=inp.value
-// }
+
 </script>
 <template>
   
-   <input ref=inp type="range" min=0 max="100" class="slider" v-model="val" v-on:input="$emit('update:val',val/100)" />
-{{val}}
-<!-- {{vol.volume}} -->
+   <input  ref=inp type="range" min=0 max="100" class="slider"  v-model="val" v-on:input="$emit('update:val',val/100)" />
+
 </template>
 <style scoped>
-        
+  .slider{
+   
+  border: 1px solid #2d2d2d00;
+color:blue;
+  border-radius: 5px;
+  background:rgb(65,0,66);
+  background: linear-gradient(90deg, rgba(65,0,66,1) 0%, rgba(246,145,247,1) 100%);
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -11px;
+  height:10px;
+
+  }   
+  .slider::-moz-range-thumb{
+
+  border: none;
+height: 100%;
+width: 20px;
+border:1px solid #000000;
+  border-radius: 5px;
+  background: rgba(109, 109, 109, 0.149);
+  margin-top: -11px;
+  }   
+  .slider::-ms-thumb{
+
+border: none;
+height: 100%;
+width: 20px;
+border:1px solid #000000;
+border-radius: 5px;
+background: rgba(109, 109, 109, 0.149);
+margin-top: -11px;
+}
+.slider::-webkit-slider-thumb{
+
+border: none;
+height: 100%;
+width: 20px;
+border:1px solid #000000;
+border-radius: 5px;
+background: rgba(109, 109, 109, 0.149);
+margin-top: -11px;
+}      
        
 </style>
