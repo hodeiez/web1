@@ -16,18 +16,24 @@ defineProps<{
 </template>
 <style scoped>
   .slider{
-   
+    appearance: none;
   border: 1px solid #2d2d2d00;
-color:blue;
+
   border-radius: 5px;
   background:rgb(65,0,66);
   background: linear-gradient(90deg, rgba(65,0,66,1) 0%, rgba(246,145,247,1) 100%);
   cursor: pointer;
-  -webkit-appearance: none;
-  margin-top: -11px;
+ margin-top:-30px;
+ margin-bottom: 30px;;
+  /* margin-top: -11px; */
   height:10px;
 
   }   
+  .slider::-webkit-slider-runnable-track{
+    appearance: none;
+  height:10px;
+
+  }  
   .slider::-moz-range-thumb{
 
   border: none;
@@ -36,7 +42,7 @@ width: 20px;
 border:1px solid #000000;
   border-radius: 5px;
   background: rgba(109, 109, 109, 0.149);
-  margin-top: -11px;
+  /* margin-top: -11px; */
   }   
   .slider::-ms-thumb{
 
@@ -46,17 +52,18 @@ width: 20px;
 border:1px solid #000000;
 border-radius: 5px;
 background: rgba(109, 109, 109, 0.149);
-margin-top: -11px;
+/* margin-top: -11px; */
 }
 .slider::-webkit-slider-thumb{
-
+  appearance: none;
+/* border: none; */
 border: none;
 height: 100%;
 width: 20px;
 border:1px solid #000000;
-border-radius: 5px;
-background: rgba(109, 109, 109, 0.149);
-margin-top: -11px;
+  border-radius: 5px;
+  background: rgba(109, 109, 109, 0.149);
+/* margin-top: -11px; */
 }      
        
 </style>

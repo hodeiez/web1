@@ -49,6 +49,7 @@ const track=ref(musicList[0] as Track)
  .container{
    margin:0;
    padding: 1px;
+   display: block;
  
  
  
@@ -57,7 +58,7 @@ const track=ref(musicList[0] as Track)
 text-align: center;
 align-content: center;
 align-items:center;
-margin:0;
+
 width:100%;
   
  }

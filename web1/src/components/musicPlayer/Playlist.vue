@@ -25,10 +25,10 @@ defineProps<{
  </template>
  <style scoped>
  .container{
-    max-height: 20%;
+    max-height: 80px;
     overflow-y: auto;
     margin:0;
-    height:100px;
+    height:80px;
 
 
 
