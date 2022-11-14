@@ -40,7 +40,7 @@ defineProps<{
      color:rgb(255, 252, 252);
      text-align: center;
      list-style-type: none;
-     background-color: rgba(255, 102, 219, 0.199);
+     background-color: rgb(39, 38, 38);
      border-radius: 0.3rem;
      padding:0.2rem;
      margin:0.2rem;
@@ -54,7 +54,7 @@ defineProps<{
  }
  .trackInList:hover{
      cursor:pointer;
-     background-color:rgb(1, 88, 88)
+     background-color:rgb(74, 84, 84)
  }
  .trackInList:active{
      background-color:blueviolet

@@ -21,14 +21,16 @@ const props=defineProps<{
         }
       
         .container {
+            background: linear-gradient(100deg, rgb(255, 255, 255) 0%, rgb(31, 31, 31) 100%);
             background-color: rgba(90, 1, 81, 0.164);
             width:100%;
                 border-radius: 15px;
         }
       
         .bar {
-            background-color: rgba(139, 139, 140, 0.366);
-            color: white;
+            
+            background-color: rgb(92, 92, 92);
+           
             padding: 1%;
             text-align: right;
             font-size: 20px;

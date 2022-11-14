@@ -1,4 +1,6 @@
-<script setup lang="ts">
+
+<script setup lang="ts" allowJs="true">
+
 import { ref } from 'vue';
 import MyProgressBar from './MyProgressBar.vue';
 import MyVolume from './MyVolume.vue';
@@ -25,6 +27,13 @@ const stop=()=>{
    
 }
 
+
+
+/*
+play &#9658;
+stop &#9646; 
+pause &#10074;&#10074;
+*/
 const timer=()=>{setInterval(()=>{
     t.value=ap.value.currentTime
 },10)}
@@ -33,10 +42,10 @@ const timer=()=>{setInterval(()=>{
     
     <div class="container">
     <div class="playerContainer">
-    
-    <button class="play" @click="play">  &#9658;</button>
-    <button class="stop" @click="stop"> &#9646; </button>
-    <button class="pause" @click="pause"> &#10074;&#10074; </button>
+ 
+    <button class="play" @click="play"> <img class="image" src="./../../assets/play.png"/></button>
+    <button class="stop" @click="stop"><img class="image" src="./../../assets/stop.png"/> </button>
+    <button class="pause" @click="pause"> <img class="image" src="./../../assets/pause.png"/> </button>
     <audio ref="ap" :src=track.track autoplay=false></audio>
 </div>
     <MyVolume class="volu" :vol=ap :val=100 v-on:update:val="ap.volume=$event"/>
@@ -46,7 +55,10 @@ const timer=()=>{setInterval(()=>{
    
 </template>
 <style>
-
+.image{
+    max-width: 60%;
+    filter: drop-shadow(1px 1px white)
+}
 .container{
 display: flex;
 flex-direction: column;
@@ -75,17 +87,17 @@ flex-direction: column;
     padding:10px;
     border:none;
     margin: 5px;
-    color:rgba(255, 102, 219, 0.437);
+    /* color:rgba(255, 102, 219, 0.437); */
     display:inline-block;
-   box-shadow: 0px 0px 0px 1px rgba(223, 223, 223, 0.619);
+   /* box-shadow: 0px 0px 0px 1px rgba(223, 223, 223, 0.619); */
     
 }
-.playerContainer button:hover{
-    background-color: rgb(224, 177, 224);
-    color:rgb(13, 13, 13);
+.image:hover{
+    /* background-color: rgb(224, 177, 224); */
+    filter: drop-shadow(1px 3px white)
 }
 .playerContainer button:focus{
-    background-color: rgb(231, 231, 231);
+    background-color: rgba(231, 231, 231, 0.036);
    
     color:rgb(13, 13, 13);
 }

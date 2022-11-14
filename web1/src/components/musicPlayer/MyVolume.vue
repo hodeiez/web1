@@ -20,8 +20,8 @@ defineProps<{
   border: 1px solid #2d2d2d00;
 
   border-radius: 5px;
-  background:rgb(65,0,66);
-  background: linear-gradient(90deg, rgba(65,0,66,1) 0%, rgba(246,145,247,1) 100%);
+  /* background:rgb(65,0,66); */
+  background: linear-gradient(100deg, rgb(53, 53, 53) 0%, rgb(255, 255, 255) 100%);
   cursor: pointer;
  margin-top:-30px;
  margin-bottom: 30px;;
@@ -41,7 +41,7 @@ height: 100%;
 width: 20px;
 border:1px solid #000000;
   border-radius: 5px;
-  background: rgba(109, 109, 109, 0.149);
+  background: rgba(109, 109, 109, 0.71);
   /* margin-top: -11px; */
   }   
   .slider::-ms-thumb{
@@ -51,7 +51,7 @@ height: 100%;
 width: 20px;
 border:1px solid #000000;
 border-radius: 5px;
-background: rgba(109, 109, 109, 0.149);
+background: rgba(109, 109, 109, 0.71);
 /* margin-top: -11px; */
 }
 .slider::-webkit-slider-thumb{
@@ -62,7 +62,7 @@ height: 100%;
 width: 20px;
 border:1px solid #000000;
   border-radius: 5px;
-  background: rgba(109, 109, 109, 0.149);
+  background: rgba(109, 109, 109, 0.71);
 /* margin-top: -11px; */
 }      
        
