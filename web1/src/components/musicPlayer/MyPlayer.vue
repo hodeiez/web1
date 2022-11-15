@@ -1,13 +1,16 @@
 
 <script setup lang="ts" allowJs="true">
 
-import { start } from 'repl';
+
 import { ref } from 'vue';
 import MyProgressBar from './MyProgressBar.vue';
 import MyVolume from './MyVolume.vue';
+import type { Track } from './types';
+
 const isMobile=navigator.userAgentData?navigator.userAgentData!.mobile:false
-const track=defineProps<{
-        track:string;
+defineProps<{
+        track:Track;
+        show:Boolean;
     }>()
 
     const ap=ref({}as HTMLAudioElement) 
@@ -28,34 +31,28 @@ const stop=()=>{
    
 }
 
-
-
-/*
-play &#9658;
-stop &#9646; 
-pause &#10074;&#10074;
-*/
 const timer=()=>{setInterval(()=>{
     t.value=ap.value.currentTime
 },10)}
 </script>
 <template>
-    
-    <div class="container">
+   <div :style="{textAlign:'center'}"> {{track.title}}</div>
+    <div :class="show?{container:false,hide:true}:{container:true}">
     <div class="playerContainer" :style="isMobile?{alignSelf:'center'}:{alignSelf:'flex-start'}" >
 
     <button class="play" @click="play"> <img class="image" src="./../../assets/play.png"/></button>
-    <button class="stop" @click="stop"><img class="image" src="./../../assets/stop.png"/> </button>
     <button class="pause" @click="pause"> <img class="image" src="./../../assets/pause.png"/> </button>
-    <audio ref="ap" :src=track.track autoplay=false></audio>
+    <button class="stop" @click="stop"><img class="image" src="./../../assets/stop.png"/> </button>
+    <audio ref="ap" :src=track.src autoplay=false></audio>
 </div>
 
     <MyVolume v-if="!isMobile" class="volu" :vol=ap :val=100 v-on:update:val="ap.volume=$event"/>
 </div>
 <MyProgressBar :size=ap.duration :progress=t />
-
    
 </template>
+
+
 <style>
 .image{
     max-width: 60%;
@@ -64,24 +61,19 @@ const timer=()=>{setInterval(()=>{
 .container{
 display: flex;
 flex-direction: column;
-
-
-
-
+}
+.hide{
+    display:none;
 }
 .playerContainer{
  
   margin:0;
-    
-  
+     
 }
 .volu{
  align-self: flex-end;
  margin:0;
   
-
-
-    
 }
 .playerContainer button{
     background-color: rgba(29, 29, 29, 0.199);
@@ -89,9 +81,8 @@ flex-direction: column;
     padding:10px;
     border:none;
     margin: 5px;
-    /* color:rgba(255, 102, 219, 0.437); */
     display:inline-block;
-   /* box-shadow: 0px 0px 0px 1px rgba(223, 223, 223, 0.619); */
+  
     
 }
 .image:hover{

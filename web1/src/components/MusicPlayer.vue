@@ -31,40 +31,42 @@ title:"Relaxing Nature",
 coverImage:"https://getwallpapers.com/wallpaper/full/e/a/c/460547.jpg"}]
 
 const track=ref(musicList[0] as Track)
-
+const show=ref(true)
+const handleShow=()=>{
+  show.value=show.value?false:true
+}
 
 </script>
 <template>
+  <div>
+  <button :class="{revealButton:true}" v-on:click="handleShow">player</button>
     <div class="container">
-      <Playlist class="list" v-on:update:track="track=$event" :tracks="musicList"/>
-    <MyPlayer :track="track.src"/>
-   
-   
-
-  
+      <Playlist :class="{'list':show}" v-on:update:track="track=$event" :tracks="musicList"/>
+    <MyPlayer :show="show" :track="track"/> 
+</div>
 </div>
  </template>
  <style scoped>
-
+.revealButton{
+  background:transparent;
+  color:white;
+  border-radius: 10px;
+  padding: 10px;
+  margin:0;
+  
+}
  .container{
    margin:0;
    padding: 1px;
    display: block;
- 
- 
- 
+
  }
  .list{
 text-align: center;
 align-content: center;
 align-items:center;
-
 width:100%;
-  
- }
- .player{
-    
-
+display:none;
  }
  </style>
 
