@@ -1,10 +1,11 @@
 
 <script setup lang="ts" allowJs="true">
 
+import { start } from 'repl';
 import { ref } from 'vue';
 import MyProgressBar from './MyProgressBar.vue';
 import MyVolume from './MyVolume.vue';
-
+const isMobile=navigator.userAgentData?navigator.userAgentData!.mobile:false
 const track=defineProps<{
         track:string;
     }>()
@@ -41,14 +42,15 @@ const timer=()=>{setInterval(()=>{
 <template>
     
     <div class="container">
-    <div class="playerContainer">
- 
+    <div class="playerContainer" :style="isMobile?{alignSelf:'center'}:{alignSelf:'flex-start'}" >
+
     <button class="play" @click="play"> <img class="image" src="./../../assets/play.png"/></button>
     <button class="stop" @click="stop"><img class="image" src="./../../assets/stop.png"/> </button>
     <button class="pause" @click="pause"> <img class="image" src="./../../assets/pause.png"/> </button>
     <audio ref="ap" :src=track.track autoplay=false></audio>
 </div>
-    <MyVolume class="volu" :vol=ap :val=100 v-on:update:val="ap.volume=$event"/>
+
+    <MyVolume v-if="!isMobile" class="volu" :vol=ap :val=100 v-on:update:val="ap.volume=$event"/>
 </div>
 <MyProgressBar :size=ap.duration :progress=t />
 
@@ -68,7 +70,7 @@ flex-direction: column;
 
 }
 .playerContainer{
-  align-self: flex-start;
+ 
   margin:0;
     
   

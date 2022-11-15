@@ -24,22 +24,20 @@ const props=defineProps<{
             background: linear-gradient(100deg, rgb(255, 255, 255) 0%, rgb(31, 31, 31) 100%);
             background-color: rgba(90, 1, 81, 0.164);
             width:100%;
-                border-radius: 15px;
+            border-radius: 15px;
+            height:10px;
         }
       
         .bar {
             
             background-color: rgb(92, 92, 92);
-           
-            padding: 1%;
+            height:10px;
+            /* padding: 1%; */
             text-align: right;
-            font-size: 20px;
+            font-size: 10px;
              border-radius: 15px;
         }
       
-        .prog {
-            
-        }
       
        
 </style>
