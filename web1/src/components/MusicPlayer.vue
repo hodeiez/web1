@@ -39,7 +39,8 @@ const handleShow=()=>{
 </script>
 <template>
   <div>
-  <button :class="{revealButton:true}" v-on:click="handleShow">player</button>
+  <button :class="{revealButton:true}" v-on:click="handleShow">	
+&#9660;</button>
     <div class="container">
       <Playlist :class="{'list':show}" v-on:update:track="track=$event" :tracks="musicList"/>
     <MyPlayer :show="show" :track="track"/> 
@@ -53,6 +54,8 @@ const handleShow=()=>{
   border-radius: 10px;
   padding: 10px;
   margin:0;
+  width:100%;
+  border-color: transparent;
   
 }
  .container{

@@ -11,7 +11,7 @@ defineProps<{
 </script>
 <template>
   
-   <input  ref=inp type="range" min=0 max="100" class="slider"  v-model="val" v-on:input="$emit('update:val',val/100)" />
+   <input  ref=inp type="range" min=0 max="100" class="slider"  v-model="val" v-on:input="$emit('update:val',val/100?val/100:0)" />
 
 </template>
 <style scoped>
