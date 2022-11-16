@@ -2,10 +2,11 @@
 
 
 
-defineProps<{
+// defineProps<{
 
-       val:number;
-    }>()
+//        val:number;
+//     }>()
+    const val=ref(1)
      const inp=ref({}as HTMLInputElement) 
 
 </script>
