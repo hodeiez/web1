@@ -17,10 +17,7 @@ defineProps<{
 <style scoped>
   .slider{
     appearance: none;
-  border: 1px solid #2d2d2d00;
-
   border-radius: 5px;
-  /* background:rgb(65,0,66); */
   background: linear-gradient(100deg, rgb(53, 53, 53) 0%, rgb(255, 255, 255) 100%);
   cursor: pointer;
  margin-top:-30px;

@@ -46,9 +46,9 @@ const timer=()=>{setInterval(()=>{
     <audio ref="ap" :src=track.src autoplay=false></audio>
 </div>
 
-    <MyVolume v-if="!isMobile" class="volu" :vol=ap :val=100 v-on:update:val="ap.volume=$event"/>
+    <MyVolume v-if="!isMobile" class="volu" :vol=ap :val="100" v-on:update:val="ap.volume=$event"/>
 </div>
-<MyProgressBar :size=ap.duration :progress=t />
+<MyProgressBar :size=ap.duration?ap.duration:0 :progress=t />
    
 </template>
 
