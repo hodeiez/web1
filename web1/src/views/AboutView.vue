@@ -1,7 +1,10 @@
+<script setup lang="ts">
+import CardVue from "../components/infoCards/Card.vue"
+</script>
 <template>
     <div class="about">
-        <h1>Building a webPage while learning Vue</h1>
-    </div>
+    <CardVue/>
+           </div>
 </template>
 
 <style>
