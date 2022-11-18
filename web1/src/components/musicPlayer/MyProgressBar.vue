@@ -2,7 +2,7 @@
 
 
 
-const props=defineProps<{
+defineProps<{
         progress:number
         size:number
     }>()
@@ -32,7 +32,6 @@ const props=defineProps<{
             
             background-color: rgb(92, 92, 92);
             height:10px;
-            /* padding: 1%; */
             text-align: right;
             font-size: 10px;
              border-radius: 15px;

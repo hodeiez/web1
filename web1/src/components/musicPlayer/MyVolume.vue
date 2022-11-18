@@ -1,11 +1,6 @@
-<script setup lang="ts">import { watch,ref, watchEffect } from 'vue';
+<script setup lang="ts">import { ref } from 'vue';
 
 
-
-// defineProps<{
-
-//        val:number;
-//     }>()
     const val=ref(1)
      const inp=ref({}as HTMLInputElement) 
 
@@ -23,7 +18,6 @@
   cursor: pointer;
  margin-top:-30px;
  margin-bottom: 30px;;
-  /* margin-top: -11px; */
   height:10px;
 
   }   
@@ -50,7 +44,7 @@ width: 20px;
 border:1px solid #000000;
 border-radius: 5px;
 background: rgba(109, 109, 109, 0.71);
-/* margin-top: -11px; */
+
 }
 .slider::-webkit-slider-thumb{
   appearance: none;
@@ -61,7 +55,6 @@ width: 20px;
 border:1px solid #000000;
   border-radius: 5px;
   background: rgba(109, 109, 109, 0.71);
-/* margin-top: -11px; */
 }      
        
 </style>
