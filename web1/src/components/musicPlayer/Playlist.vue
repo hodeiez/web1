@@ -1,7 +1,6 @@
 
 <script setup lang="ts">
 
-// import 'vue3-audio-player/dist/style.css'
 import {defineProps} from 'vue'
 import type { Track } from './types';
 
@@ -16,47 +15,73 @@ defineProps<{
  
    <div class="container">
     <div class="list" >
-        <div class="trackInList" v-for="t in tracks" v-on:click="$emit('update:track',t)">
-        <p class="trackTitle">{{t.title}}</p><p>{{t.description}}</p>
-        <!-- <img  class="trackImage" :src='t.coverImage'/> -->
+        <div class="trackInList" v-for="t in tracks" >
+       <div class="trackInfo" v-on:click="$emit('update:track',t)">
+        <p class="trackTitle">{{t.title}}</p><p>{{t.description}} </p>
+    </div>
+        <div class="remove" v-on:click="$emit('remove:track',t)">x</div>
         </div>
     </div>
 </div>
  </template>
  <style scoped>
+ .remove{
+    border-color: white;
+    background-color: transparent;
+    border-style:solid;
+    border-width: 1px;
+    padding-left: 6px;
+    padding-right: 6px;
+    border-radius: 10px;
+    display: flex;
+    align-self: flex-end;
+    vertical-align: center;
+    padding-top:0.1rem;
+    padding-bottom:0.1rem;
+    margin-right: 9px;
+    margin-left: 9px;
+    margin-top: auto;
+    margin-bottom: auto;
+     }
+ .remove:hover{
+        background-color: rgb(184, 184, 184);
+        color: rgb(0, 0, 0);
+        cursor:pointer;
+        border-color: rgb(120, 120, 120);
+     }  
  .container{
     max-height: 80px;
     overflow-y: auto;
     margin:0;
     height:80px;
-
-
-
-
-
  }
-
- .trackInList{
-     color:rgb(255, 252, 252);
-     text-align: center;
+.trackInList{
+   
      list-style-type: none;
-     background-color: rgb(39, 38, 38);
+  
      border-radius: 0.3rem;
-     padding:0.2rem;
-     margin:0.2rem;
+     padding:0.1rem;
+     margin:0rem;
      display: flex;
      align-self:center;
      font-size:10px;
-    
-    
      
+}
+ .trackInfo{
+     color:rgb(255, 252, 252);
+     padding:0.3rem;
+    width:100%;
+     background-color: rgb(39, 38, 38);
      
+     display: flex;
+     align-self:flex-start;
+      
  }
- .trackInList:hover{
+ .trackInfo:hover{
      cursor:pointer;
      background-color:rgb(74, 84, 84)
  }
- .trackInList:active{
+ .trackInfo:active{
      background-color:blueviolet
  }
 .list{

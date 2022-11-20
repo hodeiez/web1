@@ -1,7 +1,7 @@
 <script setup lang="ts">import { ref } from 'vue';
 
 
-    const val=ref(1)
+    const val=ref(30)
      const inp=ref({}as HTMLInputElement) 
 
 </script>
@@ -34,7 +34,6 @@ width: 20px;
 border:1px solid #000000;
   border-radius: 5px;
   background: rgba(109, 109, 109, 0.71);
-  /* margin-top: -11px; */
   }   
   .slider::-ms-thumb{
 
@@ -48,7 +47,6 @@ background: rgba(109, 109, 109, 0.71);
 }
 .slider::-webkit-slider-thumb{
   appearance: none;
-/* border: none; */
 border: none;
 height: 100%;
 width: 20px;

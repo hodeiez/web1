@@ -2,7 +2,7 @@
 <script setup lang="ts" allowJs="true">
 
 
-import { ref } from 'vue';
+import { ref, watchEffect } from 'vue';
 import MyProgressBar from './MyProgressBar.vue';
 import MyVolume from './MyVolume.vue';
 import type { Track } from './types';
@@ -34,6 +34,9 @@ const stop=()=>{
 const timer=()=>{setInterval(()=>{
     t.value=ap.value.currentTime
 },10)}
+watchEffect(() => {
+    ap.value.volume=0.3
+})
 </script>
 <template>
    <div :style="{textAlign:'center'}"> {{track.title}}</div>
@@ -46,10 +49,11 @@ const timer=()=>{setInterval(()=>{
     <audio ref="ap" :src=track.src autoplay=false></audio>
 </div>
 
-    <MyVolume v-if="!isMobile" class="volu" :vol=ap  v-on:update:val="ap.volume=$event"/>
+    <MyVolume v-if="!isMobile" class="volu" v-on:update:val="ap.volume=$event" />
 </div>
 <MyProgressBar :size=ap.duration?ap.duration:0 :progress=t />
-   
+   {{t}}
+   {{ap.duration-t}}
 </template>
 
 
