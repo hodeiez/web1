@@ -1,31 +1,51 @@
 <script setup lang="ts">
 import TracksInCard from './TracksInCard.vue';
-import myAudio from "./../../assets/andromedamilkyway_session.mp3"
-import type { Track } from '../musicPlayer/types';
-//TODO: lift up the list
-const musicList:Track[]=[
- {src:myAudio,
- title:"Hodeis andromeda",
- coverImage:"https://www.kolpaper.com/wp-content/uploads/2021/01/Psychedelic-Art-Wallpaper-2.jpg",
-description:"In only 4 billion years andromeda and the milky way will dance together"}
-,
- {src:myAudio,
- title:"Hodeis andromeda2",
- coverImage:"https://www.kolpaper.com/wp-content/uploads/2021/01/Psychedelic-Art-Wallpaper-2.jpg",
-description:"In only 4 billion years andromeda and the milky way will dance together"}
-,
- {src:myAudio,
- title:"Hodeis andromeda3",
- coverImage:"https://www.kolpaper.com/wp-content/uploads/2021/01/Psychedelic-Art-Wallpaper-2.jpg",
-description:"In only 4 billion years andromeda and the milky way will dance together"}
-,]
+import type { Card } from './types';
+
+
+defineProps<{
+    cardInfo:Card;
+    cardType:string;
+}>()
+
+
 </script>
 <template>
-    
-    <h1 class="text">I AM CARD</h1>
-    <TracksInCard :tracks="musicList"  />
+    <div class="container" :style="{backgroundColor:cardType}">
+    <h3 class="title">{{cardInfo.title}}</h3>
+    <img :src="cardInfo.image" />
+    <div class="date">{{cardInfo.date}}</div>
+    <div class="description">{{cardInfo.description}}</div>
+    <TracksInCard class="tracksInCard" :tracks="cardInfo.tracks!"  />
+</div>
 </template>
-<style>
+<style scoped>
+
+.container{
+
+    width:200px;
+    border-color: white;
+    /* border-style:solid; */
+    border-width: 1px;
+    padding:10px;
+    border-radius: 5px;
+    /* background-color: transparent; */
+}
+.tracksInCard{
+    margin-top: 5px;
+    text-align:center;
+}
+.date{
+    font-size: 10px;
+    text-align: right;
+}
+.description{
+    font-size: 12px;
+    text-align: justify;
+    text-justify:inter-word;
+    background-color: rgba(0, 0, 0, 0.099);
+    border-radius: 10px;
+}
 .text{
     color:white;
 }
