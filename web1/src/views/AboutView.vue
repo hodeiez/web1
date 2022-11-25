@@ -86,7 +86,7 @@ switch (type){
     animation-duration:5s;
     height:400px;
     animation-name:branch-extend;
-    position: absolute;
+    position: relative;
     top:100px;
   /*this depends on card type*/
     border:solid;
