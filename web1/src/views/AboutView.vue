@@ -62,11 +62,23 @@ switch (type){
 </script>
 <template>
     <div class="about" v-for="c in mockCards">
+    <div class="branch" :style="{backgroundColor:setCardColor(c.type)}"></div>
     <CardVue class="card" :cardInfo=c :cardType="setCardColor(c.type)" />
            </div>
 </template>
 
 <style scoped>
+
+.branch{
+    width:50px;
+    animation-duration:5s;
+    height:900px;
+    animation-name:branch-extend
+}
+@keyframes branch-extend{
+    from{height:0px;}
+    to{height:900px}
+}
 .card{
     margin:15px 0;
     
@@ -82,6 +94,7 @@ switch (type){
 }
 
 @media (min-width: 1024px) {
+
     /* .about {
         min-height: 100vh;
         display: flex;

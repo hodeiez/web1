@@ -20,16 +20,36 @@ defineProps<{
 </div>
 </template>
 <style scoped>
+@media (min-width: 360px) {
+    .container{
 
+width:250px;
+
+}}
+@media (min-width: 760px) {
+    .container{
+
+width:700px;
+
+
+}
+}
+@media (min-width: 1024px) {
+    .container{
+
+width:900px;
+
+}
+}
 .container{
 
-    width:200px;
+    /* width:400px; */
     border-color: white;
     /* border-style:solid; */
     border-width: 1px;
     padding:10px;
     border-radius: 5px;
-    /* background-color: transparent; */
+    /* color: blue; */
 }
 .tracksInCard{
     margin-top: 5px;
