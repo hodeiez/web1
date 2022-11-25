@@ -73,11 +73,14 @@ switch (type){
     width:50px;
     animation-duration:5s;
     height:900px;
-    animation-name:branch-extend
+    animation-name:branch-extend;
+    position: absolute;
+    bottom:-800px;
+    left:250px; /*this depends on card type*/
 }
 @keyframes branch-extend{
     from{height:0px;}
-    to{height:900px}
+    to{height:900px}/*resize accordin to next card pos*/
 }
 .card{
     margin:15px 0;
