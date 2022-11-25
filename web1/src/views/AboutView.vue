@@ -58,11 +58,23 @@ switch (type){
         return "transparent";
 }
 }
+const setSide=(type:string)=>{
+switch (type){
+    case "profesional":
+        return {left:'260px'}
+    case "personal":
+        return {left:'270px'}
+    case "creative":
+        return {left:'265px'}
+    default:
+        return {default:"transparent"};
+}
+}
 
 </script>
 <template>
     <div class="about" v-for="c in mockCards">
-    <div class="branch" :style="{backgroundColor:setCardColor(c.type)}"></div>
+    <div class="branch" :style="{borderColor:setCardColor(c.type),...setSide(c.type)}"></div>
     <CardVue class="card" :cardInfo=c :cardType="setCardColor(c.type)" />
            </div>
 </template>
@@ -72,15 +84,19 @@ switch (type){
 .branch{
     width:50px;
     animation-duration:5s;
-    height:900px;
+    height:400px;
     animation-name:branch-extend;
     position: absolute;
-    bottom:-800px;
-    left:250px; /*this depends on card type*/
+    top:100px;
+  /*this depends on card type*/
+    border:solid;
+    border-left:0px;
+    border-radius: 0px 15px 20px 0px;
+
 }
 @keyframes branch-extend{
     from{height:0px;}
-    to{height:900px}/*resize accordin to next card pos*/
+    to{height:400px}/*resize accordin to next card pos*/
 }
 .card{
     margin:15px 0;
