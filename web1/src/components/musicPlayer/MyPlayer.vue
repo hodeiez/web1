@@ -52,8 +52,6 @@ watchEffect(() => {
     <MyVolume v-if="!isMobile" class="volu" v-on:update:val="ap.volume=$event" />
 </div>
 <MyProgressBar :size=ap.duration?ap.duration:0 :progress=t />
-   {{t}}
-   {{ap.duration-t}}
 </template>
 
 

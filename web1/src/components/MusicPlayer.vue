@@ -66,6 +66,7 @@ const handleShow=()=>{
   margin:0;
   width:100%;
   border-color: transparent;
+  cursor: pointer;
   
 }
  .container{
