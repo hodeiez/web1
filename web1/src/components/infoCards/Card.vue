@@ -11,7 +11,7 @@ defineProps<{
 
 </script>
 <template>
-    <div class="container" :style="{backgroundColor:cardType}">
+    <div class="container" :style="{backgroundColor:cardType}" >
     <img :src="cardInfo.image" />
     <h3 class="title">{{cardInfo.title}}</h3>
     <div class="date">{{cardInfo.date}}</div>

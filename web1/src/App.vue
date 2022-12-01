@@ -8,14 +8,15 @@ import MusicPlayerVue from './components/MusicPlayer.vue'
 </script>
 
 <template>
-<MusicPlayerVue class="aligned"/>
-            <nav>
+    <div class="stick black">
+<MusicPlayerVue class="mplayer"/>
+            <nav >
          
-                <RouterLink to="/">Home</RouterLink>
-                <RouterLink to="/about">About</RouterLink>
-                <RouterLink to="/first">First</RouterLink>
+                <RouterLink to="/">Start</RouterLink>
+                <RouterLink to="/about">Bio</RouterLink>
+                <RouterLink to="/first">Contact</RouterLink>
             </nav>
- 
+        </div>
             
     <RouterView />
 
@@ -26,12 +27,23 @@ import MusicPlayerVue from './components/MusicPlayer.vue'
     line-height: 1.5;
     max-height: 100vh;
 } */
-
-.aligned{
+.black{
+    background-color: var(--color-background);
+}
+.mplayer{
     display: block;
     margin:auto;
     height: 100%;
-    width:100%
+    width:100%;
+    position:sticky;
+    top:0;
+    z-index: 1;
+    
+}
+.stick{
+    position:sticky;
+    top:0;
+    z-index: 1;
 }
 
 nav {
@@ -54,6 +66,7 @@ nav a {
     padding: 0 1rem;
     border-left: 1px solid var(--color-border);
     font-size: 20px;
+    color:#FCA101;
 }
 
 nav a:first-of-type {
@@ -61,7 +74,15 @@ nav a:first-of-type {
 }
 
 @media (min-width: 1024px) {
-   
+   nav{
+    text-align: center;
+        /* margin-left: -1rem; */
+        font-size: 1rem;
+margin:auto;
+        padding: 0;
+        /* margin-top: 1rem; */
+    background-color: var(--color-background);
+   }
     /* header {
         display: flex;
         place-items: center;

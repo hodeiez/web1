@@ -5,7 +5,7 @@ import WelcomeItem from './WelcomeItem.vue';
 
 <template>
     
-       <div>playing around with Vue</div>
+       <div>Hello this is my web!</div>
   
 
 </template>
