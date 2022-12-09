@@ -12,8 +12,9 @@ export default defineComponent({
 
 <template>
   <!-- type checking and auto-completion enabled -->
- <h1 class="count2">simple counter, click the number</h1>
-  <div class="count" v-on:click="count++">{{count}}</div>
+  <div>CONTACT</div>
+ <!-- <h1 class="count2">simple counter, click the number</h1>
+  <div class="count" v-on:click="count++">{{count}}</div> -->
 </template>
 <style>
 .count{
