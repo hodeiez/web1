@@ -63,14 +63,10 @@ width:900px;
 }
 .container{
 
-    /* width:400px; */
     border-color: white;
-    /* border-style:solid; */
     border-width: 1px;
     padding:10px;
     border-radius: 5px;
-    
-    /* color: blue; */
 }
 .tracksInCard{
     margin-top: 5px;
@@ -81,10 +77,8 @@ width:900px;
     text-align: right;
 }
 .description{
-    /* font-size: 12px; */
     text-align: justify;
     text-justify:inter-word;
-    /* background-color: rgba(0, 0, 0, 0.099); */
     border-radius: 10px;
 }
 .text{

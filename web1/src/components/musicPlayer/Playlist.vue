@@ -30,7 +30,7 @@ defineProps<{
     background-color: transparent;
     border-style:solid;
     border-width: 1px;
-    padding-left: 6px;
+    padding-left: 5px;
     padding-right: 6px;
     border-radius: 10px;
     display: flex;
