@@ -3,8 +3,24 @@ import CardVue from "../components/infoCards/Card.vue"
 import myAudio from "./../assets/andromedamilkyway_session.mp3"
 import type { Track } from '../components/musicPlayer/types';
 import type { Card } from '../components/infoCards/types';
-import { ref } from "vue";
+import { callWithAsyncErrorHandling, onMounted, onUnmounted, ref, watchEffect } from "vue";
 
+
+
+    const getTest=ref( "shit")
+const test=import.meta.env.VITE_TEST
+//test fetch
+const fetchTest=async()=>{
+
+    const res=await fetch('/api/infocards/2020/2023')
+    const ob=await res.json()
+    console.log(ob)
+    getTest.value=ob
+
+
+}
+// callWithAsyncErrorHandling(fetchTest,null,ErrorEvent)
+watchEffect( async()=>await fetchTest())
 //TODO: lift up the list
 const musicList:Track[]=[
  {src:myAudio,
@@ -115,6 +131,7 @@ const cardVisible=(vi:any,el:any,c:Card) => {
            <div class="instructionContainer">
            <div v-if="nocards" class="instructions">click on the filters down there to show my bio cards</div>
            <div v-if="nocards" class="arrow"></div>
+{{ getTest }}
         </div>
            <div class="buttonsContent">
 <label class="button pers">
