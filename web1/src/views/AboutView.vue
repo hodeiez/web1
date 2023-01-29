@@ -7,7 +7,7 @@ import { callWithAsyncErrorHandling, onMounted, onUnmounted, ref, watchEffect } 
 
 
 
-    const getTest=ref( "shit")
+    const getTest=ref( {})
 const test=import.meta.env.VITE_TEST
 //test fetch
 fetch('/api/infocards/2020/2023').then(r=>r.json()).then(d=>getTest.value=d)
