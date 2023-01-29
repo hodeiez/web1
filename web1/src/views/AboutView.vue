@@ -14,8 +14,8 @@ const fetchTest=async()=>{
 
     const res=await fetch('/api/infocards/2020/2023')
     const ob=await res.json()
-    console.log(ob)
-    getTest.value=ob
+    console.log(ob[0])
+    getTest.value=ob[0].title
 
 
 }
