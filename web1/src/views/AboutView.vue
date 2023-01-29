@@ -10,19 +10,20 @@ import { callWithAsyncErrorHandling, onMounted, onUnmounted, ref, watchEffect } 
     const getTest=ref( "shit")
 const test=import.meta.env.VITE_TEST
 //test fetch
-const fetchTest=async()=>{
+fetch('/api/infocards/2020/2023').then(r=>r.json()).then(d=>getTest.value=d)
+// const fetchTest=async()=>{
 
-    const res=await fetch('/api/infocards/2020/2023')
-    const ob=await res.json()
-    console.log(ob[0])
-    getTest.value=ob[0].title
+//     const res=await fetch('/api/infocards/2020/2023')
+//     const ob=await res.json()
+//     console.log(ob[0])
+//     getTest.value=ob[0].title
 
 
-}
-// callWithAsyncErrorHandling(fetchTest,null,ErrorEvent)
-// watchEffect( async()=>await fetchTest())
+// }
+// // callWithAsyncErrorHandling(fetchTest,null,ErrorEvent)
+// // watchEffect( async()=>await fetchTest())
 
-onMounted(async ()=>{await fetchTest()})
+// onMounted(async ()=>{await fetchTest()})
 
 //TODO: lift up the list
 const musicList:Track[]=[
