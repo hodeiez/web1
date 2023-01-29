@@ -16,7 +16,8 @@ export default ({}) => {
         server: {
             proxy: {
                 '/api': {
-                    target: process.env.VITE_API,
+                    target: 'https://hodei-web1.onrender.com',
+                    // target: process.env.VITE_API,
                     changeOrigin: true,
                     secure: false,
                     ws: true,
