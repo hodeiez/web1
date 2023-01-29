@@ -20,7 +20,10 @@ const fetchTest=async()=>{
 
 }
 // callWithAsyncErrorHandling(fetchTest,null,ErrorEvent)
-watchEffect( async()=>await fetchTest())
+// watchEffect( async()=>await fetchTest())
+
+onMounted(async ()=>{await fetchTest()})
+
 //TODO: lift up the list
 const musicList:Track[]=[
  {src:myAudio,
