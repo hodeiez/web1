@@ -8,9 +8,9 @@ import { callWithAsyncErrorHandling, onMounted, onUnmounted, ref, watchEffect } 
 
 
     const getTest=ref( {})
-const test=import.meta.env.VITE_TEST
+// const test=import.meta.env.VITE_TEST
 //test fetch
-fetch('/api/infocards/2020/2023').then(r=>r.json()).then(d=>getTest.value=d)
+// fetch('/api/infocards/2020/2023').then(r=>r.json()).then(d=>getTest.value=d)
 // const fetchTest=async()=>{
 
 //     const res=await fetch('/api/infocards/2020/2023')
