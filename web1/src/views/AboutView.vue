@@ -12,7 +12,7 @@ import { callWithAsyncErrorHandling, onMounted, onUnmounted, ref, watchEffect } 
 //test fetch
 // fetch('/api/infocards/2020/2023').then(r=>r.json()).then(d=>getTest.value=d)
 fetch('/api/infocards/2020/2023').then(r=>console.log(r))
-fetch('https://hodei-web1.onrender.com/api/infocards/2020/2023').then(r=>console.log(r))
+fetch('https://hodei-web1.onrender.com/api/infocards/2020/2023').then(r=>r.json()).then(d=>console.log(d))
 // const fetchTest=async()=>{
 
 //     const res=await fetch('/api/infocards/2020/2023')
