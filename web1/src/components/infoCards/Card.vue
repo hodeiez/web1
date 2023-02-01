@@ -12,7 +12,7 @@ const {cardInfo}=toRefs(props)
 const image=ref({}as any)
 const fetchTest=async(ref:string)=>{
 
-const res=await fetch(`https://hodei-web1.onrender.com/api/image/${ref}`)
+const res=await fetch(`https://hodei-web1.onrender.com/api/image/ref/${ref}`)
 const ob=await res.json()
 image.value=ob
 
