@@ -1,6 +1,7 @@
 export type Track = {
-    src: string;
+    fileRef: string;
     title: string;
-    coverImage: string;
+    coverImage?: string;
     description?: string;
+    date?: string;
 };

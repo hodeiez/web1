@@ -4,10 +4,12 @@ import myAudio from "./../assets/andromedamilkyway_session.mp3"
 import type { Track } from '../components/musicPlayer/types';
 import type { Card } from '../components/infoCards/types';
 import { callWithAsyncErrorHandling, onMounted, onUnmounted, ref, watchEffect } from "vue";
+import { useInfoCardsStore } from "@/stores/infoCards";
 
 
 
-    const getTest=ref( {})
+    const getTest=ref( []as Card[])
+    const infoCards=useInfoCardsStore()
 // const test=import.meta.env.VITE_TEST
 //test fetch
 // fetch('/api/infocards/2020/2023').then(r=>r.json()).then(d=>getTest.value=d)
@@ -15,9 +17,12 @@ import { callWithAsyncErrorHandling, onMounted, onUnmounted, ref, watchEffect } 
 // fetch('https://hodei-web1.onrender.com/api/infocards/2020/2023').then(r=>r.json()).then(d=>console.log(d))
 const fetchTest=async()=>{
 
-    const res=await fetch('https://hodei-web1.onrender.com/api/infocards/2020/2023')
+    const res=await fetch('https://hodei-web1.onrender.com/api/infocards/2000/2023')
     const ob=await res.json()
     getTest.value=ob
+    
+    infoCards.$state.list=ob
+    infoCards.addList(ob)
 
 
 }
@@ -28,20 +33,20 @@ watchEffect( async()=>await fetchTest())
 
 //TODO: lift up the list
 const musicList:Track[]=[
- {src:myAudio,
+ {fileRef:myAudio,
  title:"Hodeis andromeda",
  coverImage:"https://www.kolpaper.com/wp-content/uploads/2021/01/Psychedelic-Art-Wallpaper-2.jpg",
-description:"In only 4 billion years andromeda and the milky way will dance together"}
+ description:"In only 4 billion years andromeda and the milky way will dance together"}
 ,
- {src:myAudio,
+ {fileRef:myAudio,
  title:"Hodeis andromeda2",
  coverImage:"https://www.kolpaper.com/wp-content/uploads/2021/01/Psychedelic-Art-Wallpaper-2.jpg",
-description:"In only 4 billion years andromeda and the milky way will dance together"}
+ description:"In only 4 billion years andromeda and the milky way will dance together"}
 ,
- {src:myAudio,
+ {fileRef:myAudio,
  title:"Hodeis andromeda3",
  coverImage:"https://www.kolpaper.com/wp-content/uploads/2021/01/Psychedelic-Art-Wallpaper-2.jpg",
-description:"In only 4 billion years andromeda and the milky way will dance together"}
+ description:"In only 4 billion years andromeda and the milky way will dance together"}
 ,]
 //TODO: mock card
 const mockCards:Card[]=[{
@@ -51,7 +56,7 @@ const mockCards:Card[]=[{
     date:"1998-11-22",
     tracks:musicList,
     image:"https://trippy.me/wp-content/uploads/digital-trippy-psychedelic.jpg",
-    type:"crea",
+    type:"Creative",
 },{
     title:"this is a title",
     year:"1999",
@@ -84,7 +89,7 @@ switch (type){
         return 'rgba(84, 101, 255, 1)'
     case "pers":
         return 'rgba(0, 145, 77, 1)'
-    case "crea":
+    case "Creative":
         return 'rgba(170, 50, 7, 1)'
     default:
         return "transparent";
@@ -97,7 +102,7 @@ switch (type){
         return {left:'260px'}
     case "pers":
         return {left:'270px'}
-    case "crea":
+    case "Creative":
         return {left:'265px'}
     default:
         return {default:"transparent"};
@@ -111,8 +116,8 @@ const change=(e:String)=>{
 }
 const nocards=ref(true)
 const filtered=(cards:Card[])=>{
+    console.log(cards)
     const filter=cards.filter(c=>filters.value.includes(c.type))
-    
     nocards.value=filter.length===0
 return filter
 }
@@ -127,7 +132,7 @@ const cardVisible=(vi:any,el:any,c:Card) => {
 <template>
 
 
-    <div class="about" v-for="c in filtered(mockCards)">
+    <div class="about" v-for="c in filtered(infoCards.$state.list)">
     <!-- <div class="branch" :style="{borderColor:setCardColor(c.type),...setSide(c.type)}"></div> //TODO: retake the branch-->
     <CardVue class="card" :cardInfo=c :cardType="setCardColor(c.type)" v-observe-visibility="{callback:(isVisible: any,entry: any)=>cardVisible(isVisible,entry,c),intersection:{threshold:0.9}}"/>
 
@@ -136,7 +141,7 @@ const cardVisible=(vi:any,el:any,c:Card) => {
            <div class="instructionContainer">
            <div v-if="nocards" class="instructions">click on the filters down there to show my bio cards</div>
            <div v-if="nocards" class="arrow"></div>
-{{ getTest }}
+{{infoCards.$state.list}}
         </div>
            <div class="buttonsContent">
 <label class="button pers">
@@ -145,8 +150,8 @@ const cardVisible=(vi:any,el:any,c:Card) => {
 <label class="button prof">
 <input type="checkbox"   @change="change('prof')"><span class="checkText">PROFESSIONAL</span>
 </label>
-<label class="button crea">
-<input type="checkbox"   @change="change('crea')"><span class="checkText">CREATIVE</span>
+<label class="button Creative">
+<input type="checkbox"   @change="change('Creative')"><span class="checkText">CREATIVE</span>
 </label>
 
 </div>
@@ -293,7 +298,7 @@ background-color:rgba(84, 101, 255, 1)
 .pers{
 background-color:rgba(0, 145, 77, 1)
 }
-.crea{
+.Creative{
 background-color:rgba(170, 50, 7, 1)
 }
 </style>
