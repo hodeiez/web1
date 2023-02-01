@@ -46,7 +46,7 @@ watchEffect(() => {
     <button class="play" @click="play"> <img class="image" src="./../../assets/play.png"/></button>
     <button class="pause" @click="pause"> <img class="image" src="./../../assets/pause.png"/> </button>
     <button class="stop" @click="stop"><img class="image" src="./../../assets/stop.png"/> </button>
-    <audio ref="ap" :src=track.src autoplay=false></audio>
+    <audio ref="ap" :src=track.fileRef autoplay=false></audio>
 </div>
 
     <MyVolume v-if="!isMobile" class="volu" v-on:update:val="ap.volume=$event" />
