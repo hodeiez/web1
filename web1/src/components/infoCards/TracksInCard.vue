@@ -1,20 +1,19 @@
 <script setup lang="ts">
+import { getAudioByRef } from '@/api/urls';
 import { useTracksListStore } from '@/stores/trackList';
 import type { Track } from '../musicPlayer/types';
 
 defineProps<{
     tracks:Track[],
 }>()
+
 const theList=useTracksListStore()
-const addTrack=(track:Track)=>{
-    theList.addTrack(track)
-}
 
 </script>
 <template>
     
     <div class="track">
-        <div class="trackInList" v-for="t in tracks" v-on:click="addTrack(t)">{{t.title}}</div>
+        <div class="trackInList" v-for="t in tracks" v-on:click="getAudioByRef(t,theList.addTrack)">{{t.title}}</div>
     </div>
 </template>
 <style scoped>

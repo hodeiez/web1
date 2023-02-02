@@ -1,93 +1,21 @@
 <script setup lang="ts">
 import CardVue from "../components/infoCards/Card.vue"
-import myAudio from "./../assets/andromedamilkyway_session.mp3"
-import type { Track } from '../components/musicPlayer/types';
 import type { Card } from '../components/infoCards/types';
-import { callWithAsyncErrorHandling, onMounted, onUnmounted, ref, watchEffect } from "vue";
+import { ref, watchEffect } from "vue";
 import { useInfoCardsStore } from "@/stores/infoCards";
+import { getCardsByRange } from "@/api/urls";
 
-
-
-    const getTest=ref( []as Card[])
     const infoCards=useInfoCardsStore()
-// const test=import.meta.env.VITE_TEST
-//test fetch
-// fetch('/api/infocards/2020/2023').then(r=>r.json()).then(d=>getTest.value=d)
-// fetch('/api/infocards/2020/2023').then(r=>console.log(r))
-// fetch('https://hodei-web1.onrender.com/api/infocards/2020/2023').then(r=>r.json()).then(d=>console.log(d))
-const fetchTest=async()=>{
-
-    const res=await fetch('https://hodei-web1.onrender.com/api/infocards/2000/2023')
-    const ob=await res.json()
-    getTest.value=ob
-    
-    infoCards.$state.list=ob
-    infoCards.addList(ob)
 
 
-}
-// // callWithAsyncErrorHandling(fetchTest,null,ErrorEvent)
-watchEffect( async()=>await fetchTest())
+watchEffect( async()=>await getCardsByRange('2000','2024',infoCards.addList))
 
-// onMounted(async ()=>{await fetchTest()})
 
-//TODO: lift up the list
-const musicList:Track[]=[
- {fileRef:myAudio,
- title:"Hodeis andromeda",
- coverImage:"https://www.kolpaper.com/wp-content/uploads/2021/01/Psychedelic-Art-Wallpaper-2.jpg",
- description:"In only 4 billion years andromeda and the milky way will dance together"}
-,
- {fileRef:myAudio,
- title:"Hodeis andromeda2",
- coverImage:"https://www.kolpaper.com/wp-content/uploads/2021/01/Psychedelic-Art-Wallpaper-2.jpg",
- description:"In only 4 billion years andromeda and the milky way will dance together"}
-,
- {fileRef:myAudio,
- title:"Hodeis andromeda3",
- coverImage:"https://www.kolpaper.com/wp-content/uploads/2021/01/Psychedelic-Art-Wallpaper-2.jpg",
- description:"In only 4 billion years andromeda and the milky way will dance together"}
-,]
-//TODO: mock card
-const mockCards:Card[]=[{
-    title:"this is a title",
-    year:"1998",
-    description:"this is a description, this is a description, this is a description, this is a description. this is a description, this is a description, this is a description,",
-    date:"1998-11-22",
-    tracks:musicList,
-    imageRef:"https://trippy.me/wp-content/uploads/digital-trippy-psychedelic.jpg",
-    type:"Creative",
-},{
-    title:"this is a title",
-    year:"1999",
-    description:"this is a description, this is a description, this is a description, this is a description. this is a description, this is a description, this is a description,",
-    date:"1999-11-22",
-    tracks:musicList,
-    imageRef:"https://i1.wp.com/blockpublisher.com/wp-content/uploads/2018/10/HTB1bRvdLpXXXXXsaXXXq6xXFXXX2.jpg?fit=900%2C600&ssl=1",
-    type:"pers",
-},{
-    title:"this is a title",
-    year:"1999",
-    description:"this is a description, this is a description, this is a description, this is a description. this is a description, this is a description, this is a description,",
-    date:"1999-11-22",
-    tracks:musicList,
-    imageRef:"https://imagenes.20minutos.es/files/gallery_desktop_default_content/uploads/imagenes/2006/09/14/509162a.jpg",
-    type:"prof"
-},
-{
-    title:"this is a title",
-    year:"2000",
-    description:"this is a description, this is a description, this is a description, this is a description. this is a description, this is a description, this is a description,",
-    date:"2000-11-22",
-    tracks:musicList,
-    imageRef:"https://i1.wp.com/blockpublisher.com/wp-content/uploads/2018/10/HTB1bRvdLpXXXXXsaXXXq6xXFXXX2.jpg?fit=900%2C600&ssl=1",
-    type:"pers",
-}]
 const setCardColor=(type:string)=>{
 switch (type){
-    case "prof":
+    case "Professional":
         return 'rgba(84, 101, 255, 1)'
-    case "pers":
+    case "Personal":
         return 'rgba(0, 145, 77, 1)'
     case "Creative":
         return 'rgba(170, 50, 7, 1)'
@@ -95,45 +23,30 @@ switch (type){
         return "transparent";
 }
 }
-//for branch
-const setSide=(type:string)=>{
-switch (type){
-    case "prof":
-        return {left:'260px'}
-    case "pers":
-        return {left:'270px'}
-    case "Creative":
-        return {left:'265px'}
-    default:
-        return {default:"transparent"};
-}
-}
 //card filter
 const filters=ref([] as String [])
 const change=(e:String)=>{
- filters.value=filters.value.find(a=>a==e)?filters.value.filter(t=>t!==e):filters.value.concat(e)
- 
+    filters.value=filters.value.find(a=>a==e)?filters.value.filter(t=>t!==e):filters.value.concat(e)
+    
 }
 const nocards=ref(true)
 const filtered=(cards:Card[])=>{
-    console.log(cards)
     const filter=cards.filter(c=>filters.value.includes(c.type))
     nocards.value=filter.length===0
-return filter
+    return filter
 }
 //for showing actual year
 const theYear=ref("1981")
 
 const cardVisible=(vi:any,el:any,c:Card) => {
     theYear.value!==c.year && vi ?theYear.value=c.year:0
-// 
+    // 
 }
 </script>
 <template>
 
 
     <div class="about" v-for="c in filtered(infoCards.$state.list)">
-    <!-- <div class="branch" :style="{borderColor:setCardColor(c.type),...setSide(c.type)}"></div> //TODO: retake the branch-->
     <CardVue class="card" :cardInfo=c :cardType="setCardColor(c.type)" v-observe-visibility="{callback:(isVisible: any,entry: any)=>cardVisible(isVisible,entry,c),intersection:{threshold:0.9}}"/>
 
            </div>
@@ -141,14 +54,13 @@ const cardVisible=(vi:any,el:any,c:Card) => {
            <div class="instructionContainer">
            <div v-if="nocards" class="instructions">click on the filters down there to show my bio cards</div>
            <div v-if="nocards" class="arrow"></div>
-{{infoCards.$state.list}}
         </div>
            <div class="buttonsContent">
-<label class="button pers">
-<input type="checkbox"   @change="change('pers')"><span class="checkText">PERSONAL</span>
+<label class="button Personal">
+<input type="checkbox"   @change="change('Personal')"><span class="checkText">PERSONAL</span>
 </label>
-<label class="button prof">
-<input type="checkbox"   @change="change('prof')"><span class="checkText">PROFESSIONAL</span>
+<label class="button Professional">
+<input type="checkbox"   @change="change('Professional')"><span class="checkText">PROFESSIONAL</span>
 </label>
 <label class="button Creative">
 <input type="checkbox"   @change="change('Creative')"><span class="checkText">CREATIVE</span>
@@ -165,13 +77,13 @@ const cardVisible=(vi:any,el:any,c:Card) => {
     width:100%;
     margin:0;
     padding:0;
-left:0%;
+    left:0%;
    
     
 }
 .instructions{
     text-align: center;
-   
+    
 }
 .arrow{
     display: inline-block;
@@ -185,10 +97,10 @@ left:0%;
     -ms-animation:jump 1.3s ease 0s infinite normal;
     animation:jump 1.3s ease 0s infinite normal;
     transform: rotate(45deg);
-
+    
 }
 @-webkit-keyframes jump{
-0%{ -webkit-transform:translateY(0); transform:translateY(0) rotate(45deg); }
+    0%{ -webkit-transform:translateY(0); transform:translateY(0) rotate(45deg); }
 20%{ -webkit-transform:translateY(0); transform:translateY(0) rotate(45deg); }
 40%{ -webkit-transform:translateY(30px); transform:translateY(-30px) rotate(45deg); }
 50%{ -webkit-transform:translateY(0); transform:translateY(0) rotate(45deg); }
@@ -198,7 +110,7 @@ left:0%;
 }
 
 @keyframes jump{
-0%{ transform:translateY(0) rotate(45deg); }
+    0%{ transform:translateY(0) rotate(45deg); }
 20%{ transform:translateY(0) rotate(45deg); }
 40%{ transform:translateY(30px) rotate(45deg); }
 50%{ transform:translateY(0) rotate(45deg); }
@@ -222,11 +134,11 @@ left:0%;
     animation-name:branch-extend;
     position: relative;
     top:100px;
-  /*this depends on card type*/
+    /*this depends on card type*/
     border:solid;
     border-left:0px;
     border-radius: 0px 15px 20px 0px;
-
+    
 }
 @keyframes branch-extend{
     from{height:0px;}
@@ -247,7 +159,7 @@ left:0%;
 }
 
 @media (min-width: 1024px) {
-
+    
     /* .about {
         min-height: 100vh;
         display: flex;
@@ -257,19 +169,19 @@ left:0%;
 .buttonsContent{
     text-align: center;
     margin:20px 0 0 -30px;
-
+    
     position:fixed;
     bottom:0;
-   
+    
     width: 100%;
     background-color: rgba(255, 255, 255, 0.052);
     border-radius: 5px;
-
-
+    
+    
 }
 .button {
-margin:2px;
-padding:5px;
+    margin:2px;
+    padding:5px;
 border-radius: 5px;
 color:white;
 }
@@ -289,16 +201,17 @@ color:white;
     
    
     filter: drop-shadow(-2px -2px 1px rgb(0, 0, 0));
-   
+    
 }
-.prof{
-background-color:rgba(84, 101, 255, 1)
-
+.Professional{
+    background-color:rgba(84, 101, 255, 1)
+    
 }
-.pers{
+.Personal{
 background-color:rgba(0, 145, 77, 1)
 }
 .Creative{
-background-color:rgba(170, 50, 7, 1)
+    background-color:rgba(170, 50, 7, 1)
 }
 </style>
+

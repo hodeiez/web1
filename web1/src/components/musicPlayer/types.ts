@@ -1,5 +1,5 @@
 export type Track = {
-    fileRef: string;
+    fileRef: string | any;
     title: string;
     coverImage?: string;
     description?: string;

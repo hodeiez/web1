@@ -18,20 +18,7 @@ const musicList:Track[]=[
  {fileRef: myAudio,
  title:"Hodeis andromeda",
  coverImage:"https://www.kolpaper.com/wp-content/uploads/2021/01/Psychedelic-Art-Wallpaper-2.jpg",
-description:"In only 4 billion years andromeda and the milky way will dance together"}
-,{fileRef:"https://assets.mixkit.co/music/preview/mixkit-relaxing-in-nature-522.mp3",
-title:"Relaxing Nature",
-coverImage:"https://getwallpapers.com/wallpaper/full/e/a/c/460547.jpg"},{fileRef:"https://cdn.pixabay.com/download/audio/2021/09/13/audio_2112f08262.mp3",
- title:"Hello Beethoven",
- coverImage:"https://www.kolpaper.com/wp-content/uploads/2021/01/Psychedelic-Art-Wallpaper-2.jpg"}
-,{fileRef:"https://assets.mixkit.co/music/preview/mixkit-relaxing-in-nature-522.mp3",
-title:"Relaxing Nature",
-coverImage:"https://getwallpapers.com/wallpaper/full/e/a/c/460547.jpg"},{fileRef:"https://cdn.pixabay.com/download/audio/2021/09/13/audio_2112f08262.mp3",
- title:"Hello Beethoven",
- coverImage:"https://www.kolpaper.com/wp-content/uploads/2021/01/Psychedelic-Art-Wallpaper-2.jpg"}
-,{fileRef:"https://assets.mixkit.co/music/preview/mixkit-relaxing-in-nature-522.mp3",
-title:"Relaxing Nature",
-coverImage:"https://getwallpapers.com/wallpaper/full/e/a/c/460547.jpg"}]
+description:"In only 4 billion years andromeda and the milky way will dance together"}]
 const theList=useTracksListStore()
 theList.$state.list=musicList as Track[]
 

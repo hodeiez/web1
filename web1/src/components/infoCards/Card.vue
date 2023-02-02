@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { getImageByRef } from '@/api/urls';
 import { ref, toRefs, watchEffect } from 'vue';
 import TracksInCard from './TracksInCard.vue';
 import type { Card } from './types';
@@ -10,21 +11,8 @@ const props=defineProps<{
 }>()
 const {cardInfo}=toRefs(props)
 const image=ref({}as any)
-const fetchTest=async(ref:string)=>{
-console.log(ref)
-    if (ref!=undefined){
 
-
-const res=await fetch(`https://hodei-web1.onrender.com/api/image/ref/${ref}`)
-const ob=await res.blob()
-image.value=URL.createObjectURL(ob)
-console.log(image.value)
-}else{
-    image.value={}
-}
-}
-// // callWithAsyncErrorHandling(fetchTest,null,ErrorEvent)
-watchEffect( async()=>await fetchTest(cardInfo.value.imageRef!))
+watchEffect( async()=>await getImageByRef(cardInfo.value.imageRef!,image))
 
 </script>
 <template>
@@ -33,7 +21,7 @@ watchEffect( async()=>await fetchTest(cardInfo.value.imageRef!))
     <h3 class="title">{{cardInfo.title}}</h3>
     <div class="date">{{cardInfo.date}}</div>
     <div class="description">{{cardInfo.description}}</div>
-    <TracksInCard class="tracksInCard" :tracks="cardInfo.tracks!"  />
+    <TracksInCard class="tracksInCard" :tracks="cardInfo.tracksRef!"  />
 </div>
 </template>
 <style scoped>
