@@ -55,7 +55,7 @@ const mockCards:Card[]=[{
     description:"this is a description, this is a description, this is a description, this is a description. this is a description, this is a description, this is a description,",
     date:"1998-11-22",
     tracks:musicList,
-    image:"https://trippy.me/wp-content/uploads/digital-trippy-psychedelic.jpg",
+    imageRef:"https://trippy.me/wp-content/uploads/digital-trippy-psychedelic.jpg",
     type:"Creative",
 },{
     title:"this is a title",
@@ -63,7 +63,7 @@ const mockCards:Card[]=[{
     description:"this is a description, this is a description, this is a description, this is a description. this is a description, this is a description, this is a description,",
     date:"1999-11-22",
     tracks:musicList,
-    image:"https://i1.wp.com/blockpublisher.com/wp-content/uploads/2018/10/HTB1bRvdLpXXXXXsaXXXq6xXFXXX2.jpg?fit=900%2C600&ssl=1",
+    imageRef:"https://i1.wp.com/blockpublisher.com/wp-content/uploads/2018/10/HTB1bRvdLpXXXXXsaXXXq6xXFXXX2.jpg?fit=900%2C600&ssl=1",
     type:"pers",
 },{
     title:"this is a title",
@@ -71,7 +71,7 @@ const mockCards:Card[]=[{
     description:"this is a description, this is a description, this is a description, this is a description. this is a description, this is a description, this is a description,",
     date:"1999-11-22",
     tracks:musicList,
-    image:"https://imagenes.20minutos.es/files/gallery_desktop_default_content/uploads/imagenes/2006/09/14/509162a.jpg",
+    imageRef:"https://imagenes.20minutos.es/files/gallery_desktop_default_content/uploads/imagenes/2006/09/14/509162a.jpg",
     type:"prof"
 },
 {
@@ -80,7 +80,7 @@ const mockCards:Card[]=[{
     description:"this is a description, this is a description, this is a description, this is a description. this is a description, this is a description, this is a description,",
     date:"2000-11-22",
     tracks:musicList,
-    image:"https://i1.wp.com/blockpublisher.com/wp-content/uploads/2018/10/HTB1bRvdLpXXXXXsaXXXq6xXFXXX2.jpg?fit=900%2C600&ssl=1",
+    imageRef:"https://i1.wp.com/blockpublisher.com/wp-content/uploads/2018/10/HTB1bRvdLpXXXXXsaXXXq6xXFXXX2.jpg?fit=900%2C600&ssl=1",
     type:"pers",
 }]
 const setCardColor=(type:string)=>{

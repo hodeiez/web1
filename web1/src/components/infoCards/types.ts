@@ -7,7 +7,7 @@ export type Card = {
     description: string;
     tracks?: Track[];
     albums?: Album[];
-    image?: string;
+    imageRef?: string;
     link?: string;
     type: string;
 };

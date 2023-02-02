@@ -11,18 +11,20 @@ const props=defineProps<{
 const {cardInfo}=toRefs(props)
 const image=ref({}as any)
 const fetchTest=async(ref:string)=>{
-if (ref!=undefined){
+console.log(ref)
+    if (ref!=undefined){
 
 
 const res=await fetch(`https://hodei-web1.onrender.com/api/image/ref/${ref}`)
-const ob=await res.json()
-image.value=ob
+const ob=await res.blob()
+image.value=URL.createObjectURL(ob)
+console.log(image.value)
 }else{
     image.value={}
 }
 }
 // // callWithAsyncErrorHandling(fetchTest,null,ErrorEvent)
-watchEffect( async()=>await fetchTest(cardInfo.value.image!))
+watchEffect( async()=>await fetchTest(cardInfo.value.imageRef!))
 
 </script>
 <template>
