@@ -4,6 +4,7 @@ import type { Card } from '../components/infoCards/types';
 import { ref, watchEffect } from "vue";
 import { useInfoCardsStore } from "@/stores/infoCards";
 import { getCardsByRange } from "@/api/urls";
+import { isMobile, winSize, winWidth } from "@/utils";
 
     const infoCards=useInfoCardsStore()
 
@@ -42,15 +43,18 @@ const cardVisible=(vi:any,el:any,c:Card) => {
     theYear.value!==c.year && vi ?theYear.value=c.year:0
     // 
 }
+const tresh=winSize=='small'?1:winSize=='medium'?0.5:0.5
+const isSmall=winSize!=='small'
+
 </script>
 <template>
 
 
     <div class="about" v-for="c in filtered(infoCards.$state.list)">
-    <CardVue class="card" :cardInfo=c :cardType="setCardColor(c.type)" v-observe-visibility="{callback:(isVisible: any,entry: any)=>cardVisible(isVisible,entry,c),intersection:{threshold:0.9}}"/>
+    <CardVue class="card" :cardInfo=c :cardType="setCardColor(c.type)" v-observe-visibility="{callback:(isVisible: any,entry: any)=>cardVisible(isVisible,entry,c),intersection:{threshold:tresh}}"/>
 
            </div>
-           <div v-if="!nocards" class="theYear">{{theYear}}</div>
+           <div v-if="!nocards" :class="isSmall?'theYear':'theYearMob'">{{theYear}}</div>
            <div class="instructionContainer">
            <div v-if="nocards" class="instructions">click on the filters down there to show my bio cards</div>
            <div v-if="nocards" class="arrow"></div>
@@ -58,6 +62,7 @@ const cardVisible=(vi:any,el:any,c:Card) => {
            <div class="buttonsContent">
 <label class="button Personal">
 <input type="checkbox"   @change="change('Personal')"><span class="checkText">PERSONAL</span>
+{{ winWidth }}
 </label>
 <label class="button Professional">
 <input type="checkbox"   @change="change('Professional')"><span class="checkText">PROFESSIONAL</span>
@@ -126,6 +131,15 @@ const cardVisible=(vi:any,el:any,c:Card) => {
     position: fixed;
     top:50%;
     right: 10%;
+}
+.theYearMob{
+    font-size:250%;
+    font-weight: 900;
+    filter:drop-shadow(-2px -2px 0px rgb(255, 255, 255));
+    color:rgba(161, 161, 161, 0.76);
+    position: fixed;
+    top:25%;
+    right: 40%;
 }
 .branch{
     width:50px;

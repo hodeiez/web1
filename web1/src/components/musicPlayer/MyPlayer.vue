@@ -2,12 +2,13 @@
 <script setup lang="ts" allowJs="true">
 
 
+import { isMobile } from '@/utils';
 import { ref, watchEffect } from 'vue';
 import MyProgressBar from './MyProgressBar.vue';
 import MyVolume from './MyVolume.vue';
 import type { Track } from './types';
 
-const isMobile=navigator.userAgentData?navigator.userAgentData!.mobile:false
+// const isMobile=navigator.userAgentData?navigator.userAgentData!.mobile:false
 defineProps<{
         track:Track;
         show:Boolean;
