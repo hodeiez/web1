@@ -44,7 +44,7 @@ const cardVisible=(vi:any,el:any,c:Card) => {
     // 
 }
 const tresh=winSize=='small'?1:winSize=='medium'?0.5:0.5
-const isSmall=winSize!=='small'
+const isSmall=winSize=='small'
 
 </script>
 <template>
@@ -54,20 +54,19 @@ const isSmall=winSize!=='small'
     <CardVue class="card" :cardInfo=c :cardType="setCardColor(c.type)" v-observe-visibility="{callback:(isVisible: any,entry: any)=>cardVisible(isVisible,entry,c),intersection:{threshold:tresh}}"/>
 
            </div>
-           <div v-if="!nocards" :class="isSmall?'theYear':'theYearMob'">{{theYear}}</div>
+           <div v-if="!nocards" :class="isSmall?'theYearMob':'theYear'">{{theYear}}</div>
            <div class="instructionContainer">
            <div v-if="nocards" class="instructions">click on the filters down there to show my bio cards</div>
            <div v-if="nocards" class="arrow"></div>
         </div>
-           <div class="buttonsContent">
-<label class="button Personal">
+           <div :class="isSmall?'buttonsContentMob':'buttonsContent'">
+<label :class="isSmall?'buttonMob Personal':'button Personal'">
 <input type="checkbox"   @change="change('Personal')"><span class="checkText">PERSONAL</span>
-{{ winWidth }}
 </label>
-<label class="button Professional">
+<label :class="isSmall?'buttonMob Professional':'button Professional'">
 <input type="checkbox"   @change="change('Professional')"><span class="checkText">PROFESSIONAL</span>
 </label>
-<label class="button Creative">
+<label :class="isSmall?'buttonMob Creative':'button Creative'">
 <input type="checkbox"   @change="change('Creative')"><span class="checkText">CREATIVE</span>
 </label>
 
@@ -133,13 +132,14 @@ const isSmall=winSize!=='small'
     right: 10%;
 }
 .theYearMob{
-    font-size:250%;
+    font-size:150%;
     font-weight: 900;
-    filter:drop-shadow(-2px -2px 0px rgb(255, 255, 255));
+    filter:drop-shadow(-2px -2px 0px rgb(65, 65, 65));
     color:rgba(161, 161, 161, 0.76);
     position: fixed;
-    top:25%;
-    right: 40%;
+    top:50%;
+    right: 7%;
+    z-index:100;
 }
 .branch{
     width:50px;
@@ -193,24 +193,44 @@ const isSmall=winSize!=='small'
     
     
 }
+.buttonsContentMob{
+    text-align: center;
+    margin:20px 0 0 -30px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    position:fixed;
+    bottom:0;
+    
+    width: 100%;
+    background-color:#FCA101;
+    border-radius: 5px;
+    
+    
+}
 .button {
     margin:2px;
     padding:5px;
 border-radius: 5px;
 color:white;
 }
-.button input{
+.buttonMob {
+    margin:2px;
+    padding:18px;
+border-radius: 5px;
+color:white;
+}
+.button input,.buttonMob input{
     display: none;
 }
-.button:hover{
+.button:hover,.buttonMob:hover{
     background-color:blueviolet;
     
     cursor: pointer;
 }
-.button:active{
+.button:active,.buttonMob:active{
     background-color:rgb(14, 14, 14); 
 }
-.button input:checked+.checkText{
+.button input:checked+.checkText,.buttonMob input:checked+.checkText{
     border-radius: 10px;
     
    
