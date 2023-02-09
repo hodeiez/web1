@@ -50,10 +50,12 @@ defineProps<{
         border-color: rgb(120, 120, 120);
      }  
  .container{
-    max-height: 80px;
+    position:absolute;
+    max-height: 100%;
     overflow-y: auto;
     margin:0;
-    height:80px;
+    width:100%;
+    height:100%;
  }
 .trackInList{
    
@@ -65,16 +67,18 @@ defineProps<{
      display: flex;
      align-self:center;
      font-size:10px;
+    
      
 }
  .trackInfo{
      color:rgb(255, 252, 252);
      padding:0.3rem;
     width:100%;
-     background-color: rgb(39, 38, 38);
+     background-color: rgb(53, 45, 29);
      
      display: flex;
      align-self:flex-start;
+     border-radius:10px;
       
  }
  .trackInfo:hover{
@@ -86,7 +90,8 @@ defineProps<{
  }
 .list{
    padding:0px;
-   
+   margin-left: 20%;
+   z-index: 10;
    
   
 }
@@ -102,6 +107,7 @@ defineProps<{
 }
 .trackTitle{
     width: 30%;
+   
 }
  </style>
 

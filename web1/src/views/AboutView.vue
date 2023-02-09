@@ -182,7 +182,7 @@ const isSmall=winSize=='small'
 }
 .buttonsContent{
     text-align: center;
-    margin:20px 0 0 -30px;
+    /* margin:20px 0 0 -30px; */
     
     position:fixed;
     bottom:0;
@@ -195,7 +195,7 @@ const isSmall=winSize=='small'
 }
 .buttonsContentMob{
     text-align: center;
-    margin:20px 0 0 -30px;
+    /* margin:20px 0 0 -30px; */
     padding-top: 20px;
     padding-bottom: 20px;
     position:fixed;

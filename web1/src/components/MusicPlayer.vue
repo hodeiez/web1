@@ -35,16 +35,35 @@ const handleShow=()=>{
 </script>
 <template>
   <div>
-  <button :class="{revealButton:true}" v-on:click="handleShow">	
-</button>
+  <div :class="'buttoncontainer'">
     <div class="container">
+  <a :class="'revealButton'" v-on:click="handleShow">	
+</a>
       <Playlist :class="{'list':show}" v-on:update:track="track=$event" :tracks="theList.$state.list as Track[]" v-on:remove:track="theList.removeTrack($event)" />
     <MyPlayer :show="show" :track="track"/> 
- </div>
+    </div>
+</div>
+    
 </div>
  </template>
  <style scoped>
+ .buttoncontainer{
+  margin:0;
+  padding:0;
+ }
 .revealButton{
+  position:absolute;
+  display: block;
+  height:200px;
+  top:0;
+  left:30%;
+  width: 100%;
+  height: 100%;
+  z-index: 100; 
+  background:transparent;
+  cursor: pointer;
+}
+/*.revealButton{
   display: inline-block;
     border: solid #FCA101;
     border-width: 0 3px 3px 0;
@@ -53,17 +72,18 @@ const handleShow=()=>{
     transform: rotate(45deg);
   background:transparent;
   cursor: pointer;
-}
+}*/
 .revealButton:hover{
-  filter:blur(1px);
+  /*filter:blur(1px);*/
 
 }
 .revealButton:active{
- 
+ /*
   animation-name:jump;
   animation-delay: 0ms;
   animation-duration: 0.2s;
   animation-fill-mode: forwards;
+ */
  }
  .container{
    margin:0;
@@ -90,11 +110,13 @@ const handleShow=()=>{
 100%{ -webkit-transform:translateY(0);transform:translateY(0) rotate(180deg); }
 } 
  .list{
+  position: absolute;
 text-align: center;
 align-content: center;
 align-items:center;
 width:100%;
 display:none;
+margin-left:30px;
  }
  </style>
 

@@ -29,7 +29,8 @@ import MusicPlayerVue from './components/MusicPlayer.vue'
 }
 .mplayer{
     display: block;
-    margin:auto;
+    margin:0;
+    padding:0;
     height: 100%;
     width:100%;
     position:sticky;

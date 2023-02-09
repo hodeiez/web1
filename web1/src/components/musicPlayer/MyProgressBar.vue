@@ -21,20 +21,21 @@ defineProps<{
         }
       
         .container {
-            background: linear-gradient(100deg, rgb(255, 255, 255) 0%, rgb(31, 31, 31) 100%);
+            background: linear-gradient(100deg, rgba(251, 231, 52, 0.585) 0%, rgba(251, 162, 8, 0.892) 100%);
             background-color: rgba(90, 1, 81, 0.164);
             width:100%;
-            border-radius: 15px;
-            height:10px;
+            /* border-radius: 15px; */
+            height:70px;
+            
         }
       
         .bar {
             
-            background-color: rgb(92, 92, 92);
-            height:10px;
+            background-color: rgba(246, 172, 35, 0.649);
+            height:70px;
             text-align: right;
-            font-size: 10px;
-             border-radius: 15px;
+            font-size: 90px;
+             /* border-radius: 15px; */
         }
       
       

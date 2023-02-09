@@ -8,3 +8,9 @@ export const winSize =
         ? 'medium'
         : 'big';
 export const winWidth = window.innerWidth;
+
+const h = () => {
+    isMobile;
+    winSize;
+};
+export const updatedWindow = window.addEventListener('resize', h);
