@@ -72,7 +72,10 @@ const playF='./../../assets/play.png';
 
 <style>
 .image {
-  max-width: 90%;
+  max-width: 40px;
+  
+  object-fit:cover;
+  padding-right: 10px;
   /* filter: drop-shadow(1px 1px rgb(249, 249, 249)) */
 }
 .container {
