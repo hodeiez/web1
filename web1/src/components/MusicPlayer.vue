@@ -57,7 +57,7 @@ const handleShow=()=>{
   height:200px;
   top:0;
   left:30%;
-  width: 100%;
+  width: 70%;
   height: 100%;
   z-index: 100; 
   background:transparent;

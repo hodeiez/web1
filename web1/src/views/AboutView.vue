@@ -186,7 +186,7 @@ const isSmall=winSize=='small'
     
     position:fixed;
     bottom:0;
-    
+    margin:0;
     width: 100%;
     background-color: rgba(255, 255, 255, 0.052);
     border-radius: 5px;
