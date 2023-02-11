@@ -9,7 +9,7 @@ import { isMobile, winSize, winWidth } from "@/utils";
     const infoCards=useInfoCardsStore()
 
 
-watchEffect( async()=>await getCardsByRange('2000','2024',infoCards.addList))
+watchEffect( async()=>await getCardsByRange('1981','2024',infoCards.addList))
 
 
 const setCardColor=(type:string)=>{
@@ -49,7 +49,7 @@ const isSmall=winSize=='small'
 </script>
 <template>
 
-
+<div :class="isSmall?'aboutPageM':'aboutPage'">
     <div class="about" v-for="c in filtered(infoCards.$state.list)">
     <CardVue class="card" :cardInfo=c :cardType="setCardColor(c.type)" v-observe-visibility="{callback:(isVisible: any,entry: any)=>cardVisible(isVisible,entry,c),intersection:{threshold:tresh}}"/>
 
@@ -71,10 +71,18 @@ const isSmall=winSize=='small'
 </label>
 
 </div>
-
+</div>
 </template>
 
 <style scoped>
+.aboutPage{
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+.aboutPageM{
+    margin-top: 5%;
+    margin-bottom: 20%;
+}
 .instructionContainer{
     position:fixed;
     top:50%;
@@ -165,8 +173,9 @@ const isSmall=winSize=='small'
 .about{
     justify-content:center;
     display:flex;
-    margin: 0;
+  
     padding: 0;
+  
     /* background-color: rgba(170, 50, 7, 0.832); */
     
     
@@ -185,7 +194,7 @@ const isSmall=winSize=='small'
     /* margin:20px 0 0 -30px; */
     
     position:fixed;
-    bottom:0;
+    bottom:10px;
     margin:0;
     width: 100%;
     background-color: rgba(255, 255, 255, 0.052);

@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router';
-import HelloWorld from './components/HelloWorld.vue';
-//import FirstCompVue from './components/FirstComp.vue';
+
 import MusicPlayerVue from './components/MusicPlayer.vue'
 
 
@@ -42,6 +41,7 @@ import MusicPlayerVue from './components/MusicPlayer.vue'
     position:sticky;
     top:0;
     z-index: 1;
+    
 }
 
 nav {

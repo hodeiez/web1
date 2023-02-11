@@ -17,7 +17,7 @@ defineProps<{
     <div class="list" >
         <div class="trackInList" v-for="t in tracks" >
        <div class="trackInfo" v-on:click="$emit('update:track',t)">
-        <p class="trackTitle">{{t.title}}</p><p>{{t.description}} </p>
+        <p class="trackTitleInP">{{t.title}}</p><p>{{t.description}} </p>
     </div>
         <div class="remove" v-on:click="$emit('remove:track',t)">x</div>
         </div>
@@ -105,7 +105,7 @@ defineProps<{
  
  
 }
-.trackTitle{
+.trackTitleInP{
     width: 30%;
    
 }
