@@ -94,7 +94,7 @@ const playF='./../../assets/play.png';
 }
 .volu {
   align-self: flex-end;
-  margin: 0;
+  margin: 5px;
   padding: 0;
   z-index: 1;
 }

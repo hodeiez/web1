@@ -91,6 +91,7 @@ defineProps<{
 .list{
    padding:0px;
    margin-left: 20%;
+   margin-right: 50px;
    z-index: 10;
    
   

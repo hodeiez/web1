@@ -59,14 +59,14 @@ const isSmall=winSize=='small'
            <div v-if="nocards" class="instructions">click on the filters down there to show my bio cards</div>
            <div v-if="nocards" class="arrow"></div>
         </div>
-           <div :class="isSmall?'buttonsContentMob':'buttonsContent'">
-<label :class="isSmall?'buttonMob Personal':'button Personal'">
+           <div :class="'buttonsContent'">
+<label :class="'button Personal'">
 <input type="checkbox"   @change="change('Personal')"><span class="checkText">PERSONAL</span>
 </label>
-<label :class="isSmall?'buttonMob Professional':'button Professional'">
+<label :class="'button Professional'">
 <input type="checkbox"   @change="change('Professional')"><span class="checkText">PROFESSIONAL</span>
 </label>
-<label :class="isSmall?'buttonMob Creative':'button Creative'">
+<label :class="'button Creative'">
 <input type="checkbox"   @change="change('Creative')"><span class="checkText">CREATIVE</span>
 </label>
 
@@ -156,7 +156,7 @@ const isSmall=winSize=='small'
     animation-name:branch-extend;
     position: relative;
     top:100px;
-    /*this depends on card type*/
+
     border:solid;
     border-left:0px;
     border-radius: 0px 15px 20px 0px;
@@ -176,42 +176,18 @@ const isSmall=winSize=='small'
   
     padding: 0;
   
-    /* background-color: rgba(170, 50, 7, 0.832); */
-    
-    
+
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 700px) {
     
-    /* .about {
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-    } */
-}
-.buttonsContent{
-    text-align: center;
-    /* margin:20px 0 0 -30px; */
-    
+    .buttonsContent{
+    text-align: center;    
     position:fixed;
     bottom:10px;
     margin:0;
     width: 100%;
     background-color: rgba(255, 255, 255, 0.052);
-    border-radius: 5px;
-    
-    
-}
-.buttonsContentMob{
-    text-align: center;
-    /* margin:20px 0 0 -30px; */
-    padding-top: 20px;
-    padding-bottom: 20px;
-    position:fixed;
-    bottom:0;
-    
-    width: 100%;
-    background-color:#FCA101;
     border-radius: 5px;
     
     
@@ -222,24 +198,45 @@ const isSmall=winSize=='small'
 border-radius: 5px;
 color:white;
 }
-.buttonMob {
+}
+
+@media (max-width: 700px) {
+    .button {
     margin:2px;
     padding:18px;
 border-radius: 5px;
 color:white;
 }
-.button input,.buttonMob input{
+  
+    .buttonsContent{
+        text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    position:fixed;
+    bottom:0;
+    width: 100%;
+    background-color:#FCA101;
+    border-radius: 5px;
+    
+    
+}
+
+}
+
+
+
+.button input{
     display: none;
 }
-.button:hover,.buttonMob:hover{
+.button:hover{
     background-color:blueviolet;
     
     cursor: pointer;
 }
-.button:active,.buttonMob:active{
+.button:active{
     background-color:rgb(14, 14, 14); 
 }
-.button input:checked+.checkText,.buttonMob input:checked+.checkText{
+.button input:checked+.checkText{
     border-radius: 10px;
     
    

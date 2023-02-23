@@ -54,13 +54,13 @@ const handleShow=()=>{
 .revealButton{
   position:absolute;
   display: block;
-  height:200px;
-  top:0;
-  left:30%;
-  width: 70%;
-  height: 100%;
+  height:30px;
+  top:25px;
+  left:90%;
+  width: 50px;
+ 
   z-index: 100; 
-  background:transparent;
+  background:black;
   cursor: pointer;
 }
 /*.revealButton{
@@ -114,9 +114,10 @@ const handleShow=()=>{
 text-align: center;
 align-content: center;
 align-items:center;
-width:100%;
+width:80%;
 display:none;
 margin-left:30px;
+margin-right: 30px;
  }
  </style>
 

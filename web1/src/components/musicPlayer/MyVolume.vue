@@ -21,7 +21,7 @@
  /* margin-bottom: 30px;; */
   height:100%;
   width:40px;
-  transform: rotate(-90deg);
+  /* transform: rotate(-90deg); */
 
   }   
   .slider::-webkit-slider-runnable-track{
