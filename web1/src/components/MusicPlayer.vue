@@ -37,7 +37,7 @@ const handleShow=()=>{
   <div>
   <div :class="'buttoncontainer'">
     <div class="container">
-  <a :class="'revealButton'" v-on:click="handleShow">	
+  <a :class="'revealButton'" v-on:click="handleShow">	&#9776;
 </a>
       <Playlist :class="{'list':show}" v-on:update:track="track=$event" :tracks="theList.$state.list as Track[]" v-on:remove:track="theList.removeTrack($event)" />
     <MyPlayer :show="show" :track="track"/> 
@@ -55,24 +55,17 @@ const handleShow=()=>{
   position:absolute;
   display: block;
   height:30px;
-  top:25px;
-  left:90%;
-  width: 50px;
+  top:20px;
+
+  right:1%;
+  width: 30px;
  
   z-index: 100; 
-  background:black;
-  cursor: pointer;
-}
-/*.revealButton{
-  display: inline-block;
-    border: solid #FCA101;
-    border-width: 0 3px 3px 0;
-    padding: 4px;
-    left:50%;
-    transform: rotate(45deg);
   background:transparent;
   cursor: pointer;
-}*/
+  color:white;
+}
+
 .revealButton:hover{
   /*filter:blur(1px);*/
 
