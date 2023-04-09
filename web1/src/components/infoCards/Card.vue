@@ -3,32 +3,57 @@ import { getImageByRef } from '@/api/urls';
 import { ref, toRefs, watchEffect } from 'vue';
 import TracksInCard from './TracksInCard.vue';
 import type { Card } from './types';
+import Loading from '../animations/Loading.vue';
 
 
 const props=defineProps<{
     cardInfo:Card;
     cardType:string;
 }>()
+
+type myImage = {
+    image: any;
+    state: string;
+}
 const {cardInfo}=toRefs(props)
-const image=ref({}as any)
+const image=ref({}as myImage)
 
 watchEffect( async()=>await getImageByRef(cardInfo.value.imageRef!,image))
 
 </script>
 <template>
-    <div class="container" :style="{backgroundColor:cardType}" >
-    <img :src="image" />
+
+        <div :class="image.state!=='loading'?'container':'containerLoad'" :style="{backgroundColor:cardType}" >
+    
+    
+                <Loading  v-if="image.state==='loading'" class="loader"></Loading>
+    <img v-if="image.state!=='loading'" :src="image.image" />
     <h3 class="title">{{cardInfo.title}}</h3>
     <div class="date">{{cardInfo.date}}</div>
     <div class="description">{{cardInfo.description}}</div>
     <TracksInCard class="tracksInCard" :tracks="cardInfo.tracksRef!"  />
 </div>
+
 </template>
 <style scoped>
+.containerLoad{
+    padding:10px;
+ 
+   
+}
 @media (min-width: 360px) {
+    .loader {
+    margin-top: 100px;
+    margin-left: 70px
+}
     .container{
 
 width:250px;
+
+}
+.containerLoad{
+    width:250px;
+height: 300px;
 
 }
 .description{
@@ -36,10 +61,21 @@ width:250px;
 }
 
 }
+
 @media (min-width: 760px) {
+    .loader {
+    margin-top: 200px;
+    margin-left: 380px
+}
     .container{
 
 width:700px;
+
+
+}
+.containerLoad{
+    width:800px;
+    height: 600px;
 
 
 }
@@ -54,10 +90,24 @@ width:700px;
     color:rgb(255, 255, 255);
 }
 }
+
 @media (min-width: 1024px) {
+
+.loader {
+    margin-top: 200px;
+    margin-left: 380px
+}
     .container{
 
 width:900px;
+
+}
+.containerLoad{
+    width:900px;
+height: 700px;
+align-content:center;
+align-items: center;
+
 
 }
 .description{

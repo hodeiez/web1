@@ -19,12 +19,16 @@ defineProps<{
        <div class="trackInfo" v-on:click="$emit('update:track',t)">
         <p class="trackTitleInP">{{t.title}}</p><p>{{t.description}} </p>
     </div>
-        <div class="remove" v-on:click="$emit('remove:track',t)">x</div>
+        <div class="remove" v-on:click="$emit('remove:track',t)"><span class="tooltip">remove</span> </div>
         </div>
     </div>
 </div>
  </template>
  <style scoped>
+ .remove .tooltip {
+  visibility: hidden;
+  align-self: center;
+ }
  .remove{
     border-color: white;
     background-color: transparent;
@@ -42,13 +46,18 @@ defineProps<{
     margin-left: 9px;
     margin-top: auto;
     margin-bottom: auto;
+    height:20px;
+    width:20px;
      }
  .remove:hover{
-        background-color: rgb(184, 184, 184);
+        background-color: rgb(238, 0, 0);
         color: rgb(0, 0, 0);
         cursor:pointer;
-        border-color: rgb(120, 120, 120);
+        border-color: rgba(120, 120, 120, 0);
      }  
+     .remove:hover .tooltip {
+  visibility: visible;
+}
  .container{
     position:absolute;
     max-height: 100%;

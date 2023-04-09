@@ -18,9 +18,11 @@ export const getCardsByRange = async (
 };
 export const getImageByRef = async (ref: string, prop: any) => {
     if (ref != undefined) {
+        prop.value.state = 'loading';
         const res = await fetch(`${MyAPI.baseUrl}${MyAPI.imageRef}${ref}`);
         const ob = await res.blob();
-        prop.value = URL.createObjectURL(ob);
+        prop.value.image = URL.createObjectURL(ob);
+        prop.value.state = 'done';
     } else {
         prop.value = {};
     }

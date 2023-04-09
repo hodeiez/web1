@@ -140,13 +140,13 @@ const isSmall=winSize=='small'
     right: 10%;
 }
 .theYearMob{
-    font-size:150%;
+    font-size:100%;
     font-weight: 900;
     filter:drop-shadow(-2px -2px 0px rgb(65, 65, 65));
     color:rgba(161, 161, 161, 0.76);
     position: fixed;
     top:50%;
-    right: 7%;
+    left: 7%;
     z-index:100;
 }
 .branch{

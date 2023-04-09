@@ -4,15 +4,26 @@
 </script>
 
 <template>
-    
-       <div class="textCenter">This web is intended to use as a cv-bio page</div>
-  <div class="innerText">On top you will find a music player with some music produced by me or bands I've been producing with. 
-  Clicking on Bio you will jump to a page where you can check my BIO categorised by three categories.</div>
-
+    <div class="textCenter">
+  
+ <br>
+ <h2>What is this?</h2>
+ <div class="innerText">I am Hodei Eceiza Zaldua, at the moment I work as web developer and I created this web to use as a presentation of myself.
+ </div>
+ <br>
+ <h2>How was this web built?</h2>
+ <div class="innerText"> I used Vite framework to create the fronted using Vue. I tried to use as little third packages as possible and I deployed the frontend in Netifly.<br> The backend is a simple RestAPI created with Go and deployed in Render.<br> For store and database I used Delta
+  <br>The backend module has a basic cms to be able to upload info to the store and database from a local computer</div>
+</div>
 </template>
 <style scoped>
 .textCenter {
        text-align: center;
        margin-top: 40px;
+       
+}
+.innerText {
+     
+       
 }
 </style>
