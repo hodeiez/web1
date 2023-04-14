@@ -15,14 +15,16 @@ defineProps<{
  
    <div class="container">
     <div class="list" >
-        <div class="trackInList" v-for="t in tracks" >
-       <div class="trackInfo" v-on:click="$emit('update:track',t)">
-        <p class="trackTitleInP">{{t.title}}</p><p>{{t.description}} </p>
-    </div>
-        <div class="remove" v-on:click="$emit('remove:track',t)"><span class="tooltip">remove</span> </div>
+      <div class="trackInList" v-for="t in tracks" >
+        <div class="remove" v-on:click="$emit('remove:track',t)">
+          <span class="tooltip">&#129529;</span> 
         </div>
+        <div class="trackInfo" v-on:click="$emit('update:track',t)">
+          <p class="trackTitleInP">{{t.title}}</p><p>{{t.description}} </p>
+        </div>
+      </div>
     </div>
-</div>
+   </div>
  </template>
  <style scoped>
  .remove .tooltip {
@@ -30,17 +32,17 @@ defineProps<{
   align-self: center;
  }
  .remove{
-    border-color: white;
-    background-color: transparent;
+    border-color: rgba(120, 120, 120, 0.8);
+    background-color: rgba(128, 0, 0,0.5);
     border-style:solid;
     border-width: 1px;
-    padding-left: 5px;
-    padding-right: 6px;
+    padding-left: 2px;
+    padding-right: 0px;
     border-radius: 10px;
     display: flex;
     align-self: flex-end;
     vertical-align: center;
-    padding-top:0.1rem;
+    padding-top:0rem;
     padding-bottom:0.1rem;
     margin-right: 9px;
     margin-left: 9px;
@@ -48,16 +50,21 @@ defineProps<{
     margin-bottom: auto;
     height:20px;
     width:20px;
+    font-size: 28px;
+    color: white;
      }
  .remove:hover{
-        background-color: rgb(238, 0, 0);
-        color: rgb(0, 0, 0);
+        color: white;
         cursor:pointer;
-        border-color: rgba(120, 120, 120, 0);
-     }  
+        border-color: transparent;
+        background-color: transparent;      
+    }  
      .remove:hover .tooltip {
   visibility: visible;
 }
+ .remove:hover ~ .trackInfo {
+     background-color: red !important;
+   }
  .container{
     position:absolute;
     max-height: 100%;
@@ -69,7 +76,7 @@ defineProps<{
 .trackInList{
    
      list-style-type: none;
-  
+     flex-direction: row-reverse;     
      border-radius: 0.3rem;
      padding:0.1rem;
      margin:0rem;
