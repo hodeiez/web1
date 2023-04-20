@@ -5,7 +5,7 @@ import { ref, watchEffect } from "vue";
 import { useInfoCardsStore } from "@/stores/infoCards";
 import { getCardsByRange } from "@/api/urls";
 import { isMobile, winSize, winWidth } from "@/utils";
-
+import MyTreeView from "../components/tree/MyTreeView.vue"
     const infoCards=useInfoCardsStore()
 
 
@@ -48,8 +48,9 @@ const isSmall=winSize=='small'
 
 </script>
 <template>
-
 <div :class="isSmall?'aboutPageM':'aboutPage'">
+   
+    
     <div class="about" v-for="c in filtered(infoCards.$state.list)">
     <CardVue class="card" :cardInfo=c :cardType="setCardColor(c.type)" v-observe-visibility="{callback:(isVisible: any,entry: any)=>cardVisible(isVisible,entry,c),intersection:{threshold:tresh}}"/>
 
@@ -72,6 +73,10 @@ const isSmall=winSize=='small'
 
 </div>
 </div>
+<div class="treeView">
+      <MyTreeView :infoCards="filtered(infoCards.$state.list)"/>
+</div>
+
 </template>
 
 <style scoped>
@@ -139,6 +144,14 @@ const isSmall=winSize=='small'
     top:50%;
     right: 10%;
 }
+.treeView{
+  background-color:rgba(95, 88, 88, 0.116);
+    position: fixed;
+    top: 25%;
+    right: 87%;
+    width: 10%;
+    
+  }
 .theYearMob{
     font-size:100%;
     font-weight: 900;
