@@ -1,7 +1,7 @@
 <script lang="ts">
-
-</script>
 export default {}
+</script>
+
 <template>
 
 <div class="contactContainer">
