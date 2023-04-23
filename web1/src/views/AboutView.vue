@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { buildTreeByYear, setCardColor } from "@/components/infoCards/utils";
 import CardVue from "../components/infoCards/Card.vue"
 import type { Card } from '../components/infoCards/types';
 import { ref, watchEffect } from "vue";
@@ -12,18 +13,18 @@ import MyTreeView from "../components/tree/MyTreeView.vue"
 watchEffect( async()=>await getCardsByRange('1981','2024',infoCards.addList))
 
 
-const setCardColor=(type:string)=>{
-switch (type){
-    case "Professional":
-        return 'rgba(84, 101, 255, 1)'
-    case "Personal":
-        return 'rgba(0, 145, 77, 1)'
-    case "Creative":
-        return 'rgba(170, 50, 7, 1)'
-    default:
-        return "transparent";
-}
-}
+// const setCardColor=(type:string)=>{
+// switch (type){
+//     case "Professional":
+//         return 'rgba(84, 101, 255, 1)'
+//     case "Personal":
+//         return 'rgba(0, 145, 77, 1)'
+//     case "Creative":
+//         return 'rgba(170, 50, 7, 1)'
+//     default:
+//         return "transparent";
+// }
+// }
 //card filter
 const filters=ref([] as String [])
 const change=(e:String)=>{
@@ -74,7 +75,7 @@ const isSmall=winSize=='small'
 </div>
 </div>
 <div class="treeView">
-      <MyTreeView :infoCards="filtered(infoCards.$state.list)"/>
+      <MyTreeView :infoCards="buildTreeByYear(filtered(infoCards.$state.list))"/>
 </div>
 
 </template>
@@ -145,7 +146,7 @@ const isSmall=winSize=='small'
     right: 10%;
 }
 .treeView{
-  background-color:rgba(95, 88, 88, 0.116);
+  background-color:rgba(95, 88, 88, 0);
     position: fixed;
     top: 25%;
     right: 87%;

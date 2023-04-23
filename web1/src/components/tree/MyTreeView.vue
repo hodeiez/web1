@@ -1,44 +1,63 @@
 <script setup lang="ts">
-import type {Card} from '../infoCards/types';
-import { ref, toRefs } from "vue";
 
 defineProps<{
-    infoCards: any [],
+    infoCards: any,
 }>()
-const buildTreeByYear=(cards: any[])=>{
-  return cards.reduce((result:any, card) =>{
-    if(card.year !=null){
-      result[card.year] === undefined ?result[card.year]=new Array(card):result[card.year].push(card);
-    }
-      return result;
-  }, {})
-  };
 
-const showTree=(className:any)=>{
-  const subTrees=document.getElementsByClassName(className);
-for(const subTree of subTrees){
-  const subTreeState=window.getComputedStyle(subTree);
-  subTreeState.display === "none" ? (subTree as HTMLElement).style.display = "block" : (subTree as HTMLElement).style.display = "none";
+const showTree=(e:any)=>{
+
+const element=(e.target as HTMLElement)
+const actualClassNames=element.className;
+actualClassNames.includes("hideChild")?element.className=actualClassNames.replace("hideChild","showChild"):element.className=actualClassNames.replace("showChild","hideChild")
+
 }
-};
-
-
 
 </script>
 <template>
+
   <div class="treeContainer">
-  <div class="treeNode" v-for="item in Object.keys(buildTreeByYear(infoCards))">
-    <div @click="showTree(item)" class="yearInTree">{{item}}</div>
-      <div :class="item" style="display: none;" v-for="cards in buildTreeByYear(infoCards)[item]">
-        <div class="treeCard" >{{cards.title}}</div>
-        <div class="treeCard" >{{cards.description}}</div>
-      
+  <h2 :style="Object.keys(infoCards).length===0?{'display':'none'}:{'display':'block'}">TreeView</h2>
+  <div class="treeNode" v-for="item in Object.keys(infoCards)">
+    <div @click="showTree"  class="yearInTree hideChild">{{item}}</div>
+          <div v-for="cards in infoCards[item]">
+        <div :class="(cards.type==='Professional')?'Professional treeCard':(cards.type==='Creative')?'Creative treeCard':'Personal treeCard'">
+        <div class="showCardContent">{{cards.title}}
+        <div class="extraInfo">
+        <div class="showInfo">{{cards.description}}</div>
+      </div>
+      </div>
+      </div>
     </div>
   </div>
 </div>
 
 </template>
 <style>
+.hideChild ~ div{
+ display:none;
+}
+.showChild ~ div{
+  display:block;
+}
+.showInfo{
+  display:none;
+}
+.showCardContent:hover >div > div{
+  display: block;
+  background-color:rgb(57, 57, 57);
+left:15%;
+width: 260px;
+position:fixed;
+border-radius: 10px;
+
+  
+}
+.extraInfo{
+  position:relative;
+  top: -40px;
+ 
+}
+
 .treeContainer{
   overflow-y: auto;
   height:500px;
@@ -47,6 +66,9 @@ for(const subTree of subTrees){
   cursor: pointer;
  
 }
+.yearInTree {
+  font-weight: bold;
+}
 .treeNode{
     color: white;
     z-index:10000;
@@ -54,6 +76,19 @@ for(const subTree of subTrees){
     
   }
 .treeCard{
+  border-radius:10px;
   margin-left:10px;
+  margin-top:10px;
+  padding:5px;
     }
+.Professional{
+    background-color:rgba(84, 101, 255, 1)
+    
+}
+.Personal{
+background-color:rgba(0, 145, 77, 1)
+}
+.Creative{
+    background-color:rgba(170, 50, 7, 1)
+}
 </style>
