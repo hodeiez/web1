@@ -3,7 +3,6 @@
 </script>
 
 <template>
-  <!-- type checking and auto-completion enabled -->
 
 <div class="contactContainer">
   <div class="linksContainer">
