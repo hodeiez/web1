@@ -2,10 +2,10 @@
 import { buildTreeByYear, setCardColor } from "@/components/infoCards/utils";
 import CardVue from "../components/infoCards/Card.vue"
 import type { Card } from '../components/infoCards/types';
-import { ref, watchEffect } from "vue";
+import { reactive, ref, watchEffect } from "vue";
 import { useInfoCardsStore } from "@/stores/infoCards";
 import { getCardsByRange } from "@/api/urls";
-import { isMobile, winSize, winWidth } from "@/utils";
+import { winSize } from "@/utils";
 import MyTreeView from "../components/tree/MyTreeView.vue"
     const infoCards=useInfoCardsStore()
 
@@ -13,19 +13,6 @@ import MyTreeView from "../components/tree/MyTreeView.vue"
 watchEffect( async()=>await getCardsByRange('1981','2024',infoCards.addList))
 
 
-// const setCardColor=(type:string)=>{
-// switch (type){
-//     case "Professional":
-//         return 'rgba(84, 101, 255, 1)'
-//     case "Personal":
-//         return 'rgba(0, 145, 77, 1)'
-//     case "Creative":
-//         return 'rgba(170, 50, 7, 1)'
-//     default:
-//         return "transparent";
-// }
-// }
-//card filter
 const filters=ref([] as String [])
 const change=(e:String)=>{
     filters.value=filters.value.find(a=>a==e)?filters.value.filter(t=>t!==e):filters.value.concat(e)
@@ -47,13 +34,22 @@ const cardVisible=(vi:any,el:any,c:Card) => {
 const tresh=winSize=='small'?1:winSize=='medium'?0.5:0.5
 const isSmall=winSize=='small'
 
+
+//to focus from tree
+const cardRefs=reactive([] as any[])
+
+
+const focusCard=(key:any)=>{
+
+    cardRefs.find(c=>c.children[0].id===key).children[0].scrollIntoView({behavior: 'smooth'});
+ 
+     }
 </script>
 <template>
 <div :class="isSmall?'aboutPageM':'aboutPage'">
-   
-    
-    <div class="about" v-for="c in filtered(infoCards.$state.list)">
-    <CardVue class="card" :cardInfo=c :cardType="setCardColor(c.type)" v-observe-visibility="{callback:(isVisible: any,entry: any)=>cardVisible(isVisible,entry,c),intersection:{threshold:tresh}}"/>
+
+    <div class="about" v-for="(c, i) in filtered(infoCards.$state.list)" :ref="el =>{cardRefs[i] = el}" >
+    <CardVue  :id="c.key" class="card" :cardInfo=c :cardType="setCardColor(c.type)" v-observe-visibility="{callback:(isVisible: any,entry: any)=>cardVisible(isVisible,entry,c),intersection:{threshold:tresh}}"/>
 
            </div>
            <div v-if="!nocards" :class="isSmall?'theYearMob':'theYear'">{{theYear}}</div>
@@ -74,8 +70,8 @@ const isSmall=winSize=='small'
 
 </div>
 </div>
-<div class="treeView">
-      <MyTreeView :infoCards="buildTreeByYear(filtered(infoCards.$state.list))"/>
+<div  class="treeView">
+      <MyTreeView  @focus-card="focusCard" v-if="!isSmall" :infoCards="buildTreeByYear(filtered(infoCards.$state.list))"/>
 </div>
 
 </template>

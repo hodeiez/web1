@@ -27,7 +27,7 @@ watchEffect( async()=>await getImageByRef(cardInfo.value.imageRef!,image))
     
     
                 <Loading  v-if="image.state==='loading'" class="loader"></Loading>
-    <img v-if="image.state!=='loading'" :src="image.image" />
+    <img v-if="image.state!=='loading'" :src="image.image" class="imageInCard"/>
     <h3 class="title">{{cardInfo.title}}</h3>
     <div class="date">{{cardInfo.date}}</div>
     <div class="description">{{cardInfo.description}}</div>
@@ -40,6 +40,10 @@ watchEffect( async()=>await getImageByRef(cardInfo.value.imageRef!,image))
     padding:10px;
  
    
+}
+.imageInCard{
+    width:100%;
+    height:100%;
 }
 @media (min-width: 360px) {
     .loader {
@@ -69,21 +73,22 @@ height: 300px;
 }
     .container{
 
-width:700px;
+width:500px;
+height:500px;
 
 
 }
 .containerLoad{
     width:800px;
-    height: 600px;
+    
 
 
 }
 
 .description{
-    top:200px;
+    top:40%;
    position: absolute;
-   font-size: 30px;
+   font-size: 20px;
    background-color:rgba(0, 0, 0, 0.282);
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-style:oblique;
@@ -99,7 +104,7 @@ width:700px;
 }
     .container{
 
-width:900px;
+width:700px;
 
 }
 .containerLoad{
@@ -111,9 +116,9 @@ align-items: center;
 
 }
 .description{
-    top:200px;
+    top:70%;
    position: absolute;
-    font-size: 42px;
+    font-size: 22px;
 }
 }
 .container{

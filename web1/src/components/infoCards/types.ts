@@ -1,6 +1,7 @@
 import type { Track } from '../musicPlayer/types';
 
 export type Card = {
+    key?: string;
     title: string;
     year: string;
     date: string;
