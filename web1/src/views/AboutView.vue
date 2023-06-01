@@ -4,12 +4,13 @@ import CardVue from "../components/infoCards/Card.vue"
 import type { Card } from '../components/infoCards/types';
 import { reactive, ref, watchEffect } from "vue";
 import { useInfoCardsStore } from "@/stores/infoCards";
-import { getCardsByRange } from "@/api/urls";
+import { getCardsByRange, getCardsByRangeAndLocale } from "@/api/urls";
 import { winSize } from "@/utils";
 import MyTreeView from "../components/tree/MyTreeView.vue"
     const infoCards=useInfoCardsStore()
 
 
+// watchEffect( async()=>await getCardsByRangeAndLocale('1981','2024','eng',infoCards.addList))
 watchEffect( async()=>await getCardsByRange('1981','2024',infoCards.addList))
 
 

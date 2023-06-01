@@ -1,0 +1,20 @@
+{
+    "test": "badabil",
+    "nav": {
+        "start": "Hasiera",
+        "bio": "Bio",
+        "contact": "Kontaktua"
+    },
+    "pages": {
+        "presentation": {
+            "what": {
+                "title": "Zer da hau?",
+                "text": "Kaixo, Hodei Eceiza Zaldua naiz. Garatzaile bezala egiten dut lan eta web orrialde hau sortu dut nire aurkezpen eta biografia azalaratzeko"
+            },
+            "how": {
+                "title": "Nola eraiki dut web hau?",
+                "text": "Vite frameworka erabili dut Frontend-a eraikitzeko Vuerekin. Ahalik eta liburutegi gehigarri gutxien erabiltzea saiatu naiz eta frontenda Netlify bitartez publikatu dut. Backenda Go-n idatzitako RestAPI sinple bat da eta Render erabiliz publikatu dut. Datu base eta gordegailu gisa Delta erabili dut. Backendak cms sinple bat dauka nire ordenagailutik datuak igo ahal iztego datu basera"
+            }
+        }
+    }
+}

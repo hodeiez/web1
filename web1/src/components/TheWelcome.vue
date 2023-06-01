@@ -4,22 +4,28 @@
 </script>
 
 <template>
-    <div class="textCenter">
-  
- <br>
- <h2>What is this?</h2>
- <div class="innerText">I am Hodei Eceiza Zaldua, at the moment I work as web developer and I created this web to use as a presentation of myself.
+       
+    <div class="textCenter presentationContainer">
+ <h2>{{ $t('pages.presentation.what.title') }}</h2>
+ <div class="innerText">{{ $t('pages.presentation.what.text') }}
  </div>
  <br>
- <h2>How this web was built?</h2>
- <div class="innerText"> I used Vite framework to create the fronted using Vue. I tried to use as little third packages as possible and I deployed the frontend in Netifly.<br> The backend is a simple RestAPI created with Go and deployed in Render.<br> For store and database I used Delta
-  <br>The backend module has a basic cms to be able to upload info to the store and database from a local computer</div>
+ <h2>{{ $t('pages.presentation.how.title') }}</h2>
+ <div class="innerText"> {{ $t('pages.presentation.how.text') }}</div>
 </div>
 </template>
 <style scoped>
-.textCenter {
-       text-align: center;
+.presentationContainer{
+       width: 80%;
+       align-items: center;
        margin-top: 40px;
+       margin-left: auto;
+       margin-right: auto;
+}
+.textCenter {
+       
+       text-align: center;
+       /* margin-top: 40px; */
        
 }
 .innerText {

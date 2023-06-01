@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router';
-
 import MusicPlayerVue from './components/MusicPlayer.vue'
+import LangSelector from './components/langSelector/LangSelector.vue';
 
 
 </script>
@@ -9,11 +9,12 @@ import MusicPlayerVue from './components/MusicPlayer.vue'
 <template>
     <div class="stick black">
 <MusicPlayerVue class="mplayer"/>
+<LangSelector class="langSelector"/>
             <nav >
          
-                <RouterLink to="/">Start</RouterLink>
-                <RouterLink to="/about">Bio</RouterLink>
-                <RouterLink to="/first">Contact</RouterLink>
+                <RouterLink to="/">{{$t('nav.start')}}</RouterLink>
+                <RouterLink to="/about">{{$t('nav.bio')}}</RouterLink>
+                <RouterLink to="/first">{{$t('nav.contact')}}</RouterLink>
             </nav>
         </div>
             
@@ -22,7 +23,9 @@ import MusicPlayerVue from './components/MusicPlayer.vue'
 </template>
 
 <style scoped>
-
+.langSelector{
+    float: right;
+}
 .black{
     background-color: var(--color-background);
 }
@@ -35,6 +38,7 @@ import MusicPlayerVue from './components/MusicPlayer.vue'
     position:sticky;
     top:0;
     z-index: 1;
+    height: 70px;
     
 }
 .stick{
@@ -71,15 +75,15 @@ nav a:first-of-type {
     border: 0;
 }
 
-@media (min-width: 1024px) {
+/* @media (min-width: 1024px) {
    nav{
     text-align: center;
         /* margin-left: -1rem; */
-        font-size: 1rem;
+        /* font-size: 1rem;
 margin:auto;
-        padding: 0;
+        padding: 0; */
         /* margin-top: 1rem; */
-    background-color: var(--color-background);
-   }
-}
+    /* background-color: var(--color-background); */
+   /* } */
+/* } */
 </style>

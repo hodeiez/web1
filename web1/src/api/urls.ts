@@ -16,6 +16,18 @@ export const getCardsByRange = async (
     const ob = await res.json();
     action(ob);
 };
+export const getCardsByRangeAndLocale = async (
+    from: string,
+    to: string,
+    locale: string,
+    action: Function
+) => {
+    const res = await fetch(
+        `${MyAPI.baseUrl}${MyAPI.infoCards}${from}/${to}/${locale}`
+    );
+    const ob = await res.json();
+    action(ob);
+};
 export const getImageByRef = async (ref: string, prop: any) => {
     if (ref != undefined) {
         prop.value.state = 'loading';
