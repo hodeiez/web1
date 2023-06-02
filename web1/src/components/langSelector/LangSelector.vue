@@ -16,7 +16,7 @@
 <style scoped>
 .langContainer {
     border: 3px solid white;
-    width: 75px;
+    width: 5%;
     padding: 0;
     border-radius: 25px;
 }

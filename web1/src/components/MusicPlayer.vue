@@ -37,7 +37,9 @@ const handleShow=()=>{
   <div>
   <div :class="'buttoncontainer'">
     <div class="container">
-  <a :class="'revealButton'" v-on:click="handleShow">	&#9776;
+  <a :class="'revealButton'" v-on:click="handleShow">
+  <span v-if="show">&#9776;</span>
+  <span v-if="!show">o</span>
 </a>
       <Playlist :class="{'list':show}" v-on:update:track="track=$event" :tracks="theList.$state.list as Track[]" v-on:remove:track="theList.removeTrack($event)" />
     <MyPlayer :show="show" :track="track"/> 

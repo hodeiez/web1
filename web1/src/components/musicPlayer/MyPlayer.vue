@@ -53,10 +53,10 @@ const playF='./../../assets/play.png';
     >
       <!-- <button class="pause" @click="pause"> <img class="image" src="./../../assets/pause.png"/> </button> -->
       <!-- <button class="stop" @click="stop"><img class="image" src="./../../assets/stop.png"/> </button> -->
-      <audio ref="ap" :src="track.fileRef" autoplay="false"></audio>
+      <audio ref="ap" :src="track.fileRef" ></audio>
     </div>
   </div>
-  <div
+  <div  v-if="!show"
     class="playerContainer"
     :style="isMobile ? { alignSelf: 'center' } : { alignSelf: 'flex-start' }"
   >
