@@ -18,7 +18,7 @@ const musicList:Track[]=[
  {fileRef: myAudio,
  title:"Hodeis andromeda",
  coverImage:"https://www.kolpaper.com/wp-content/uploads/2021/01/Psychedelic-Art-Wallpaper-2.jpg",
-description:"In only 4 billion years andromeda and the milky way will dance together"}]
+description:"Only 4 billion years left"}]
 const theList=useTracksListStore()
 theList.$state.list=musicList as Track[]
 

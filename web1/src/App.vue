@@ -24,7 +24,9 @@ import LangSelector from './components/langSelector/LangSelector.vue';
 
 <style scoped>
 .langSelector{
-    float: right;
+    position: absolute;
+    right: 0;
+    margin-right: 10px;
 }
 .black{
     background-color: var(--color-background);
