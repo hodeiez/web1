@@ -45,7 +45,9 @@ watchEffect(() => {
 const playF='./../../assets/play.png';
 </script>
 <template>
-  <div :class="'trackTitle'">{{ track.title }}</div>
+  <div v-if="show" :class="'playingNow'">playing now</div>
+  <div :class="{'trackTitle':!show,'trackTitleOnShow':show}">
+  {{ track.title }}</div>
   <div :class="show ? { container: false, hide: true } : { container: true }">
     <div
       class="playerContainer"
@@ -128,5 +130,23 @@ const playF='./../../assets/play.png';
   font-size: 10px;
   color: rgb(0, 0, 0);
   z-index: 100;
+}
+.trackTitleOnShow {
+  font-size: 20px;
+  font-weight: 700;
+  color: black;
+  z-index: 100;
+  width: auto;
+  text-align: center;
+  margin-right: 100px;
+  margin-left: 100px;
+}
+.playingNow {
+  color: black;
+  z-index: 100;
+  width: auto;
+  text-align: center;
+  margin-right: 100px;
+  margin-left: 100px;
 }
 </style>

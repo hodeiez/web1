@@ -4,7 +4,7 @@ import CardVue from "../components/infoCards/Card.vue"
 import type { Card } from '../components/infoCards/types';
 import { reactive, ref, watchEffect } from "vue";
 import { useInfoCardsStore } from "@/stores/infoCards";
-import { getCardsByRange, getCardsByRangeAndLocale } from "@/api/urls";
+import { getCardsByRange } from "@/api/urls";
 import { winSize } from "@/utils";
 import MyTreeView from "../components/tree/MyTreeView.vue"
     const infoCards=useInfoCardsStore()
