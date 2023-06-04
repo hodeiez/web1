@@ -55,18 +55,18 @@ const focusCard=(key:any)=>{
            </div>
            <div v-if="!nocards" :class="isSmall?'theYearMob':'theYear'">{{theYear}}</div>
            <div class="instructionContainer">
-           <div v-if="nocards" class="instructions">click on the filters down there to show my bio cards</div>
+           <div v-if="nocards" class="instructions">{{$t('pages.bio.helpMessage')}}</div>
            <div v-if="nocards" class="arrow"></div>
         </div>
            <div :class="'buttonsContent'">
 <label :class="'button Personal'">
-<input type="checkbox"   @change="change('Personal')"><span class="checkText">PERSONAL</span>
+<input type="checkbox"   @change="change('Personal')"><span class="checkText">{{$t('pages.bio.filters.personal')}}</span>
 </label>
 <label :class="'button Professional'">
-<input type="checkbox"   @change="change('Professional')"><span class="checkText">PROFESSIONAL</span>
+<input type="checkbox"   @change="change('Professional')"><span class="checkText">{{$t('pages.bio.filters.professional')}}</span>
 </label>
 <label :class="'button Creative'">
-<input type="checkbox"   @change="change('Creative')"><span class="checkText">CREATIVE</span>
+<input type="checkbox"   @change="change('Creative')"><span class="checkText">{{$t('pages.bio.filters.creative')}}</span>
 </label>
 
 </div>

@@ -26,13 +26,13 @@ const play = () => {
     timer();
   }
 };
-const pause = () => {
-  ap.value.pause();
-};
-const stop = () => {
-  ap.value.pause();
-  ap.value.currentTime = 0;
-};
+// const pause = () => {
+//   ap.value.pause();
+// };
+// const stop = () => {
+//   ap.value.pause();
+//   ap.value.currentTime = 0;
+// };
 
 const timer = () => {
   setInterval(() => {
@@ -41,13 +41,15 @@ const timer = () => {
 };
 watchEffect(() => {
   ap.value.volume = 0.3;
+  !ap.value.paused? timer():null;
 });
-const playF='./../../assets/play.png';
+const playF = "./../../assets/play.png";
 </script>
 <template>
-  <div v-if="show" :class="'playingNow'">playing now</div>
-  <div :class="{'trackTitle':!show,'trackTitleOnShow':show}">
-  {{ track.title }}</div>
+  <div v-if="show && !ap.paused" :class="'playingNow'">playing now</div>
+  <div :class="{ trackTitle: !show, trackTitleOnShow: show }">
+    {{ track.title }}
+  </div>
   <div :class="show ? { container: false, hide: true } : { container: true }">
     <div
       class="playerContainer"
@@ -55,28 +57,28 @@ const playF='./../../assets/play.png';
     >
       <!-- <button class="pause" @click="pause"> <img class="image" src="./../../assets/pause.png"/> </button> -->
       <!-- <button class="stop" @click="stop"><img class="image" src="./../../assets/stop.png"/> </button> -->
-      <audio ref="ap" :src="track.fileRef" ></audio>
+      <audio ref="ap" :src="track.fileRef" autoplay="true"></audio>
     </div>
   </div>
-  <div  v-if="!show"
+  <div
+    v-if="!show"
     class="playerContainer"
     :style="isMobile ? { alignSelf: 'center' } : { alignSelf: 'flex-start' }"
   >
     <button class="play" @click="play">
-    
-      <img v-if="state!='play'" class="image" src="./../../assets/play.png" />
-      <img v-else class="image" src="./../../assets/pause.png" />
+      <img v-if=" state=='play' || !ap.paused" class="image" src="./../../assets/pause.png" />
+      <img v-else class="image" src="./../../assets/play.png" />
     </button>
     <MyVolume v-if="!isMobile" class="volu" v-on:update:val="ap.volume = $event" />
   </div>
-  <MyProgressBar :size="ap.played ? ap.duration : 0" :progress="t" :class="'over'" />
+  <MyProgressBar :size="ap.played || !ap.paused ? ap.duration : 0" :progress="t" :class="'over'" />
 </template>
 
 <style>
 .image {
   max-width: 40px;
-  
-  object-fit:cover;
+
+  object-fit: cover;
   padding-right: 10px;
   /* filter: drop-shadow(1px 1px rgb(249, 249, 249)) */
 }
@@ -107,8 +109,8 @@ const playF='./../../assets/play.png';
   /* padding:10px; */
   border: none;
   /* margin: 5px; */
-  display:inline;
-  width:8%;
+  display: inline;
+  width: 8%;
   z-index: 10;
 }
 .over {
@@ -119,7 +121,6 @@ const playF='./../../assets/play.png';
   /* background-color: rgb(224, 177, 224); */
   /* filter: drop-shadow(1px 3px white); */
   cursor: pointer;
-
 }
 .playerContainer button:focus {
   background-color: rgba(231, 231, 231, 0.036);

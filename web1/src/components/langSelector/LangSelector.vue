@@ -32,7 +32,7 @@ const isSmall=winSize=='small'
 <style scoped>
 .langContainer {
   border: 3px solid white;
-  width: 80px;
+  width: 73px;
   padding: 0;
   border-radius: 25px;
 }
@@ -69,23 +69,22 @@ input[type="radio"].toggle + label:after {
 input[type="radio"].toggle .eusgToggle + label {
   border-right: 0;
 }
-input[type="radio"].toggle .eusToggle + label:after {
-  /* left: 100% */
-}
+/* input[type="radio"].toggle .eusToggle + label:after {
+} */
 input[type="radio"].toggle .engToggle + label {
   margin-left: -5px;
 }
-input[type="radio"].toggle .engToggle + label:after {
-  /* left: -100% */
-}
+/* input[type="radio"].toggle .engToggle + label:after {
+
+} */
 input[type="radio"].toggle:checked + label {
   cursor: default;
   color: #000000;
   background-color: #e7a21e;
   border-radius: 25px;
-  transition: color 200ms;
+  transition: color 2000ms;
 }
-input[type="radio"].toggle:checked:after {
-  /* left:0; */
-}
+/* input[type="radio"].toggle:checked:after {
+
+} */
 </style>

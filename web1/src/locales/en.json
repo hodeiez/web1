@@ -15,6 +15,14 @@
                 "title": "How this web was built?",
                 "text": "I used Vite framework to create the fronted using Vue. I tried to use as little third packages as possible and I deployed the frontend in Netifly. The backend is a simple RestAPI created with Go and deployed in Render. For store and database I used Delta. The backend module has a basic cms to be able to upload info to the store and database from a local computer"
             }
+        },
+        "bio": {
+            "helpMessage": "click on the filters down there to show my bio cards",
+            "filters": {
+                "personal": "PERSONAL",
+                "professional": "PROFESSIONAL",
+                "creative": "CREATIVE"
+            }
         }
     }
 }
