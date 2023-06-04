@@ -32,7 +32,7 @@ const isSmall=winSize=='small'
 <style scoped>
 .langContainer {
   border: 3px solid white;
-  width: 73px;
+  width: 80px;
   padding: 0;
   border-radius: 25px;
 }
