@@ -1,5 +1,6 @@
-<script setup lang="ts">
 
+<script setup lang="ts">
+import {findLocaleText}from "@/utils"
 defineProps<{
     infoCards: any,
 }>()
@@ -21,9 +22,9 @@ actualClassNames.includes("hideChild")?element.className=actualClassNames.replac
     <div @click="showTree"  class="yearInTree hideChild">{{item}}</div>
           <div v-for="cards in infoCards[item]">
         <div  :class="(cards.type==='Professional')?'Professional treeCard':(cards.type==='Creative')?'Creative treeCard':'Personal treeCard'">
-        <div @click="$emit('focusCard', cards.key)" class="showCardContent">{{cards.title}}
+        <div @click="$emit('focusCard', cards.key)" class="showCardContent">{{findLocaleText(cards.title,$i18n.locale)}}
         <div class="extraInfo">
-        <div class="showInfo">{{cards.description}}</div>
+        <div class="showInfo">{{findLocaleText(cards.description,$i18n.locale)}}</div>
       </div>
       </div>
       </div>

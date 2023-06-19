@@ -55,6 +55,7 @@ input[type="radio"].toggle {
 }
 input[type="radio"].toggle + label {
   cursor: pointer;
+  /* width:10%; */
   /* min-width: 60px; */
 }
 input[type="radio"].toggle + label:hover {
@@ -66,8 +67,9 @@ input[type="radio"].toggle + label:after {
   /* background: #e8dbdb; */
   z-index: -1;
 }
-input[type="radio"].toggle .eusgToggle + label {
+input[type="radio"].toggle .eusToggle + label {
   border-right: 0;
+ 
 }
 /* input[type="radio"].toggle .eusToggle + label:after {
 } */
@@ -83,6 +85,9 @@ input[type="radio"].toggle:checked + label {
   background-color: #e7a21e;
   border-radius: 25px;
   transition: color 2000ms;
+  /* transition: width 2s;
+  width: 50%; */
+ 
 }
 /* input[type="radio"].toggle:checked:after {
 

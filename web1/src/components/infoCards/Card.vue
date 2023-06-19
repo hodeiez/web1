@@ -2,9 +2,9 @@
 import { getImageByRef } from '@/api/urls';
 import { ref, toRefs, watchEffect } from 'vue';
 import TracksInCard from './TracksInCard.vue';
-import type { Card } from './types';
+import type { Card} from './types';
 import Loading from '../animations/Loading.vue';
-
+import {findLocaleText}from "@/utils"
 
 const props=defineProps<{
     cardInfo:Card;
@@ -18,6 +18,8 @@ type myImage = {
 const {cardInfo}=toRefs(props)
 const image=ref({}as myImage)
 
+
+
 watchEffect( async()=>await getImageByRef(cardInfo.value.imageRef!,image))
 
 </script>
@@ -28,9 +30,9 @@ watchEffect( async()=>await getImageByRef(cardInfo.value.imageRef!,image))
     
                 <Loading  v-if="image.state==='loading'" class="loader"></Loading>
     <img v-if="image.state!=='loading'" :src="image.image" class="imageInCard"/>
-    <h3 class="title">{{cardInfo.title}}</h3>
+    <h3 class="title">{{findLocaleText(cardInfo.title,$i18n.locale)}}</h3>
     <div class="date">{{cardInfo.date}}</div>
-    <div class="description">{{cardInfo.description}}</div>
+    <div class="description">{{findLocaleText(cardInfo.description, $i18n.locale)}}</div>
     <TracksInCard class="tracksInCard" :tracks="cardInfo.tracksRef!"  />
 </div>
 

@@ -2,10 +2,10 @@ import type { Track } from '../musicPlayer/types';
 
 export type Card = {
     key?: string;
-    title: string;
+    title: LocaleLang[];
     year: string;
     date: string;
-    description: string;
+    description: LocaleLang[];
     tracksRef?: Track[];
     albums?: Album[];
     imageRef?: string;
@@ -18,4 +18,10 @@ export type Album = {
     description?: string;
     tracks: Track[];
     extra?: string;
+};
+
+export type LocaleLang = {
+    key?: string;
+    locale: string;
+    text: string;
 };
